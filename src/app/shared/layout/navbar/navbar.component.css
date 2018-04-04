@@ -1,0 +1,29 @@
+:host {
+  height: 80px;
+  display: flex;
+  background-color: rgba(248,249,250, 0.8);
+}
+
+.logo {
+  max-height: 80px;
+}
+
+  .logo > img {
+    max-height: 80px;
+  }
+
+nav {
+  padding: 0px 22px;
+  background-color: transparent;
+  flex-grow: 1;
+}
+
+.navbar-collapse {
+  display: flex;
+}
+
+.main-menu {
+  flex-grow: 1;
+  text-align: center;
+  align-content: center;
+}
