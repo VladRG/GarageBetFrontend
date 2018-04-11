@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { AppSharedModule } from './shared';
-import { AppRoutingModule } from './app-routing.module';
-import { AppAboutComponent, AppNotFoundComponent } from './static-pages';
-import { ChampionshipModule } from './features/championship/championship.module';
-import { AppCoreModule } from './core';
+import { AppSharedModule } from '@app/shared';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppAboutComponent, AppNotFoundComponent } from '@app/static-pages';
+import { ChampionshipModule, TeamModule } from '@app/features';
+import { AppCoreModule } from '@app/core';
 
 
 @NgModule({
@@ -17,13 +17,12 @@ import { AppCoreModule } from './core';
 
     // Feature modules
     ChampionshipModule,
+    TeamModule,
 
     // Top Level modules
-    AppSharedModule,
     AppCoreModule,
-    AppRoutingModule,
-
-
+    AppSharedModule,
+    AppRoutingModule
   ],
   bootstrap: [AppComponent]
 })

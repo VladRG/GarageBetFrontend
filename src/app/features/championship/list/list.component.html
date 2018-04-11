@@ -1,1 +1,17 @@
-<h2>List Championships</h2>
+<app-loading-spinner [isLoading]='isLoading' message="Loading...">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-md-12">
+      <h2>Championships</h2><hr />
+      <div class="row">
+        <ng-container *ngFor="let championship of championships">
+          <app-championship-card [championship]="championship" (edit)="edit($event)" class="col-md-6 col-lg-4">
+
+          </app-championship-card>
+        </ng-container>
+      </div>
+      <div class="button-row">
+        <button mat-button (click)="create()">CREATE</button>
+      </div>
+    </div>
+  </div>
+</app-loading-spinner>

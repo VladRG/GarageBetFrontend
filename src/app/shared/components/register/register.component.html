@@ -1,3 +1,42 @@
-<p>
-  register works!
-</p>
+<h2 mat-dialog-title>
+  <b>Register</b>
+</h2>
+<mat-dialog-content>
+  <form #registerForm="ngForm">
+    <mat-form-field>
+      <input required [(ngModel)]="credentials.email" name="email"
+             type="email" matInput #email="ngModel" placeholder="Type your email address">
+      <mat-error *ngIf="email.invalid" align="end">Must be an email address.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input required type="password" [(ngModel)]="credentials.password" name="password" matInput
+             #password="ngModel" placeholder="Type your password" min-length="5">
+      <mat-error *ngIf="password.invalid" align="end">Must have more than 5 characters.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input required type="password" [(ngModel)]="credentials.confirm" name="confirm" matInput
+             #confirm="ngModel" placeholder="Type your password" min-length="5">
+      <mat-error *ngIf="confirm.invalid" align="end">Must match password</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input required [(ngModel)]="credentials.firstName" name="firstName"
+             matInput #firstName="ngModel" placeholder="Type your first name">
+      <mat-error *ngIf="firstName.invalid" align="end">Required.</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input required [(ngModel)]="credentials.email" name="lastName"
+             matInput #lastName="ngModel" placeholder="Type your email address">
+      <mat-error *ngIf="lastName.invalid" align="end">Required.</mat-error>
+    </mat-form-field>
+
+
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [disabled]="registerForm.form.invalid" class="btn-primary" (click)='onSubmit()'>Submit</button>
+  <button mat-button (click)='dialogRef.close()'>Cancel</button>
+</mat-dialog-actions>

@@ -1,15 +1,35 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AppAuthService } from '@app/core';
+import { Credentials } from '@app/models';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class AppLoginComponent implements OnInit {
+export class AppLoginDialog {
 
-  constructor() { }
+  credentials: Credentials;
+  errorMessage = '';
 
-  ngOnInit() {
+  constructor(
+    public dialogRef: MatDialogRef<AppLoginDialog>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private authService: AppAuthService) {
+    this.credentials = new Credentials();
   }
 
+  onCancel() {
+    this.dialogRef.close();
+  }
+
+  onLogin() {
+    this.authService.login(this.credentials)
+      .subscribe(response => {
+        this.dialogRef.close();
+      }, error => {
+        this.errorMessage = error
+      });
+  }
 }

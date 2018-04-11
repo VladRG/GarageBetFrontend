@@ -1,7 +1,7 @@
 import { Team } from "./Team";
+import { BaseEntity } from "./BaseEntity";
 
-export class Championship {
-  id: number;
+export class Championship extends BaseEntity {
   name: string;
   teams: Array<Team> = []
 }

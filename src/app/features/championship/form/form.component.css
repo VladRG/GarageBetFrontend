@@ -1,0 +1,24 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+form {
+  flex-grow: 1;
+  flex-direction: column;
+  width: 100%;
+  display: flex;
+}
+
+.team-list {
+  flex-grow: 1;
+  overflow-x: auto;
+}
+
+.team-list-item {
+  display: flex;
+}
+
+.team-list-text {
+  flex-grow: 1;
+}

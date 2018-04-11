@@ -1,15 +1,65 @@
 import { Component, OnInit } from '@angular/core';
+import { HasLoadingSpinnerBase } from '@app/shared';
+import { ChampionshipService } from '@app/core';
+import { Championship } from '@app/models';
+import { Observable } from 'rxjs/Observable';
+import { MatTableDataSource, MatDialog } from '@angular/material';
+import { NewChampionshipComponent } from '../new/new.component';
+import { EditChampionshipComponent } from '@app/features/championship/edit/edit.component';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-championship-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
-export class ChampionshipListComponent implements OnInit {
+export class ChampionshipListComponent extends HasLoadingSpinnerBase implements OnInit {
 
-  constructor() { }
+  championships: Array<Championship> = [];
 
-  ngOnInit() {
+  constructor(
+    private service: ChampionshipService,
+    public dialog: MatDialog
+  ) {
+    super();
   }
 
+  ngOnInit() {
+    this.wrapObservableWithSpinner(this.fetch.bind(this))
+      .subscribe((data: Array<Championship>) => {
+        this.championships = data;
+      });
+  }
+
+  fetch(): Observable<Array<Championship>> {
+    return this.service.get();
+  }
+
+  create() {
+    const createDialog = this.dialog.open(NewChampionshipComponent, {
+      width: '420px',
+      height: '60%'
+    });
+
+    createDialog.afterClosed().subscribe((data: Championship) => {
+      if (data) {
+        this.service.add(data)
+          .subscribe((response) => this.ngOnInit());
+      }
+    });
+  }
+
+  edit(championship: Championship) {
+    const editDialog = this.dialog.open(EditChampionshipComponent, {
+      width: '420px',
+      height: '60%',
+      data: Object.assign({}, championship)
+    });
+
+    editDialog.afterClosed().subscribe((data: Championship) => {
+      if (data) {
+        this.service.update(data)
+          .subscribe((response) => this.ngOnInit());
+      }
+    });
+  }
 }

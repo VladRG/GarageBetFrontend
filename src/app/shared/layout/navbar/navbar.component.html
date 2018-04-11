@@ -17,6 +17,9 @@
         <a class="nav-link" [routerLink]="'championship'">Championships</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" [routerLink]="'team'">Teams</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link" [routerLink]="'about'">About</a>
       </li>
       <li class="nav-item">
@@ -26,10 +29,10 @@
 
     <ul class="navbar-nav pull-right">
       <li class="nav-item">
-        <a class="nav-link" href="#">Login</a>
+        <a class="nav-link" href="javascript:void(0)" (click)="onLogin()">Login</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Register</a>
+        <a class="nav-link" href="javascript:void(0)" (click)="onRegister()">Register</a>
       </li>
     </ul>
   </div>

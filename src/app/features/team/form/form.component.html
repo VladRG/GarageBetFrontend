@@ -1,0 +1,19 @@
+<form #teamForm="ngForm" *ngIf="team">
+  <div class="fields">
+    <mat-form-field hintLabel="Required">
+      <input name="name" matInput #name required placeholder="Team Name"
+             [(ngModel)]="team.name">
+      <mat-error *ngIf="name.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Required">
+      <input name="country" matInput #country required placeholder="Nationality"
+             [(ngModel)]="team.country">
+      <mat-error *ngIf="country.invalid">Required</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="button-row">
+    <button mat-button color="primary" (click)="onSave()">SAVE</button>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+  </div>
+</form>

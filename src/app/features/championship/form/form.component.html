@@ -1,0 +1,39 @@
+<form #championshipForm="ngForm" *ngIf="championship">
+  <div class="fields">
+    <mat-form-field hintLabel="Required">
+      <input name="name" matInput #name required placeholder="Championship Name"
+             [(ngModel)]="championship.name">
+      <mat-error *ngIf="name.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Required">
+      <input name="competitiveYear" matInput #competitiveYear required placeholder="Competitive Year"
+             [(ngModel)]="championship.competitiveYear">
+      <mat-error *ngIf="competitiveYear.invalid">Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select placeholder="Teams" (change)="onTeamSelected($event)">
+        <mat-option [value]="team" *ngFor="let team of availableTeams">{{team.name}}</mat-option>
+      </mat-select>
+      <mat-hint align="end">Add teams to championship.</mat-hint>
+    </mat-form-field>
+  </div>
+  <div class="team-list">
+    <mat-list *ngIf="championship.teams.length > 0">
+      <mat-list-item class="team-list-item" *ngFor="let currentTeam of championship.teams; let index = index">
+        <span class="team-list-text">{{index + 1}}. {{currentTeam.name}}</span>
+        <button mat-icon-button (click)="removeTeam(currentTeam)">
+          X
+        </button>
+      </mat-list-item>
+    </mat-list>
+    <mat-hint *ngIf="championship.teams.length == 0">
+      This championship does not have any teams.
+    </mat-hint>
+  </div>
+  <div class="button-row">
+    <button mat-button color="primary" (click)="onSave()">SAVE</button>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+  </div>
+</form>
