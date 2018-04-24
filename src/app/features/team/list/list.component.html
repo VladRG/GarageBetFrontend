@@ -4,7 +4,7 @@
       <h2>Teams</h2><hr />
       <div class="row">
         <ng-container *ngFor="let team of teams">
-          <app-team-card [team]="team" (edit)="edit($event)" class="col-md-6 col-lg-4">
+          <app-team-card [team]="team" (edit)="edit($event)" class="col-md-6 col-lg-4 team-card">
 
           </app-team-card>
         </ng-container>

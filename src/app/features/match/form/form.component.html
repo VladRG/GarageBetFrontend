@@ -1,3 +1,41 @@
-<p>
-  form works!
-</p>
+<form #matchForm="ngForm" *ngIf="match">
+  <div class="fields">
+    <mat-form-field hintLabel="Required">
+      <mat-select placeholder="Home Team" [(ngModel)]="match.homeTeam" name="homeTeam" #homeTeam="ngModel">
+        <mat-option [value]="team.id" *ngFor="let team of teams">
+          {{team.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field hintLabel="Required">
+      <mat-select placeholder="Away Team" [(ngModel)]="match.awayTeam" name="awayTeam" #awayTeam="ngModel">
+        <mat-option [value]="team.id" *ngFor="let team of teams">
+          {{team.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input type="date" [(ngModel)]="match.dateTime" name="dateTime" #dateTime='ngModel' />
+    </mat-form-field>
+
+    <div class="row" *ngIf="isClosingMatch">
+      <mat-form-field class="col">
+        <input type="number" min="0" placeholder="Home Team Score" [(ngModel)]="match.homeScore" name="homeScore"
+               #homeScore="ngModel" />
+      </mat-form-field>
+
+      <mat-form-field class="col">
+        <input type="number" min="0" placeholder="Away Team Score" [(ngModel)]="match.awayScore" name="awayScore"
+               #awayScore="ngModel" />
+      </mat-form-field>
+    </div>
+
+
+  </div>
+  <div class="button-row">
+    <button mat-button color="primary" (click)="onSave()">SAVE</button>
+    <button mat-button color="warn" (click)="onCancel()">CANCEL</button>
+  </div>
+</form>
