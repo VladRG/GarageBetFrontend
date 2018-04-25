@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { NewChampionshipComponent } from '../new/new.component';
 import { EditChampionshipComponent } from '@app/features/championship/edit/edit.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-championship-list',

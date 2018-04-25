@@ -4,7 +4,8 @@
       <h2>Championships</h2><hr />
       <div class="row">
         <ng-container *ngFor="let championship of championships">
-          <app-championship-card [championship]="championship" (edit)="edit($event)" class="col-md-6 col-lg-4">
+          <app-championship-card [championship]="championship" (edit)="edit($event)"
+                                 class="col-md-6  col-xs-12">
 
           </app-championship-card>
         </ng-container>

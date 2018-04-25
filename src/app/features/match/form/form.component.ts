@@ -3,6 +3,7 @@ import { TeamService, MatchService } from '@app/core';
 import { Championship, Team, Match } from '@app/models';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { Observable } from 'rxjs/Observable';
+import { dateTimeToDate } from '@app/utils';
 
 @Component({
   selector: 'app-match-form',
@@ -12,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit {
 
   @Input()
-  championship: Championship;
+  championshipId: number;
 
   @Input()
   isClosingMatch = false;
@@ -26,6 +27,7 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
   @Output()
   onCancel: EventEmitter<void> = new EventEmitter();
 
+  time: string = '';
   teams: Array<Team> = [];
 
   constructor(
@@ -44,15 +46,15 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
   }
 
   fetchTeams(): Observable<Array<Team>> {
-    return this.teamService.getForChampionship(this.championship.id)
+    return this.teamService.getForChampionship(this.championshipId)
   }
 
   save() {
+    this.match.dateTime = dateTimeToDate(this.match.dateTime, this.time);
     this.onSave.emit(this.match);
   }
 
   cancel() {
     this.onCancel.emit();
   }
-
 }

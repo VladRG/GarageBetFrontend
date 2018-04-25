@@ -8,11 +8,12 @@ import { AppLoginDialog, AppRegisterDialog, VgLoadingSpinnerComponent } from './
 import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
-  MatGridListModule, MatSelectModule, MatIconModule
+  MatGridListModule, MatSelectModule, MatIconModule, MatDatepickerModule, MatNativeDateModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DateToTimeStringPipe, FormatDatePipe } from './pipes';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,10 @@ import { CommonModule } from '@angular/common';
     AppFooterComponent,
     AppLoginDialog,
     AppRegisterDialog,
-    VgLoadingSpinnerComponent
+    VgLoadingSpinnerComponent,
+
+    // Pipes
+    DateToTimeStringPipe
   ],
   imports: [
     HttpClientModule,
@@ -36,6 +40,8 @@ import { CommonModule } from '@angular/common';
     MatListModule,
     MatGridListModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatIconModule,
     BrowserAnimationsModule
   ],
@@ -55,8 +61,13 @@ import { CommonModule } from '@angular/common';
     MatGridListModule,
     MatCardModule,
     MatSelectModule,
+    MatNativeDateModule,
+    MatDatepickerModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
+
+    // Pipes
+    DateToTimeStringPipe
   ],
   entryComponents: [
     AppLoginDialog,

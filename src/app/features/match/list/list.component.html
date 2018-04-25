@@ -1,3 +1,14 @@
-<p>
-  list works!
-</p>
+<app-loading-spinner [isLoading]='isLoading' message="Loading...">
+  <div class="row">
+    <div class="col-xl-8 offset-xl-2 col-md-12">
+      <h2>Matches</h2><hr />
+      <div class="row">
+        <ng-container *ngFor="let match of matches">
+          <app-match-card [match]="match" (edit)="edit($event)" class="col-md-6 col-lg-4">
+
+          </app-match-card>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</app-loading-spinner>

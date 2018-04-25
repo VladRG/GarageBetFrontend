@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
 import { Championship } from '../../../models';
 import { EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-championship-card',
@@ -9,13 +10,13 @@ import { EventEmitter } from '@angular/core';
 })
 export class ChampionshipCardComponent {
 
+  constructor(private router: Router) { }
+
   @Input()
   championship: Championship;
 
   @Output()
   edit: EventEmitter<Championship> = new EventEmitter()
-
-  constructor() { }
 
   getImagePath() {
     return `url("assets/championships/${this.championship.name.toLowerCase().replace(" ", "-")}.png")`
@@ -25,4 +26,7 @@ export class ChampionshipCardComponent {
     this.edit.emit(this.championship);
   }
 
+  addMatch(championshipId: number) {
+    this.router.navigateByUrl(`match/add/${championshipId}`);
+  }
 }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Match } from '@app/models';
 
 @Component({
   selector: 'app-match-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./card.component.css']
 })
 export class MatchCardComponent implements OnInit {
+
+  @Input()
+  match: Match;
 
   constructor() { }
 

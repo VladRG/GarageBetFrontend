@@ -1,11 +1,11 @@
 <mat-card>
   <mat-card-header>
     <mat-card-title class="text-center">
-      <div>{{match.homeTeam}} - {{match.awayTeam}}</div>
+      <div>{{match.homeTeam.name}} - {{match.awayTeam.name}}</div>
       <div *ngIf="match.homeScore && match.awayScore">
         {{match.homeScore}} - {{match.awayScore}}
       </div>
-      <div>{{match.dateTime}}</div>
+      <div>{{match.dateTime | date}} at {{match.dateTime | dateToTimeString}}</div>
     </mat-card-title>
   </mat-card-header>
   <mat-card-actions>

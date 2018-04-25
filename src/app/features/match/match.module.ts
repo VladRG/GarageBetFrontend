@@ -20,6 +20,10 @@ import { ListMatchesComponent } from "./list/list.component";
     CommonModule,
     AppSharedModule,
     MatchRoutingModule
+  ],
+  entryComponents: [
+    NewMatchComponent,
+    EditMatchComponent
   ]
 })
 export class MatchModule { }

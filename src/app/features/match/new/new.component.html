@@ -1,3 +1,12 @@
-<app-match-form (onSave)="save($event)" (onCancel)="cancel()">
+<div class="row">
+  <mat-card class="col-md-6 offset-md-3 col-xs-12">
+    <mat-card-title>
+      <h4>Add Match</h4>
+    </mat-card-title>
+    <mat-card-content>
+      <app-match-form (onSave)="save($event)" (onCancel)="cancel()" [championshipId]="championshipId" [match]="match">
 
-</app-match-form>
+      </app-match-form>
+    </mat-card-content>
+  </mat-card>
+</div>
