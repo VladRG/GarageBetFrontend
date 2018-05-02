@@ -13,7 +13,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DateToTimeStringPipe, FormatDatePipe } from './pipes';
+import { DateToTimeStringPipe } from './pipes';
 
 @NgModule({
   declarations: [

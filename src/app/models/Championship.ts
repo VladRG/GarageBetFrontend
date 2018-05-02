@@ -1,7 +1,9 @@
-import { Team } from "./Team";
+import { TeamModel } from "./Team";
 import { BaseEntity } from "./BaseEntity";
+import { Match } from './Match';
 
 export class Championship extends BaseEntity {
   name: string;
-  teams: Array<Team> = []
+  teams: Array<TeamModel> = []
+  matches: Array<Match> = [];
 }

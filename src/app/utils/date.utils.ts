@@ -9,20 +9,20 @@ export const dateTimeToDate = (date: Date, time: string): Date => {
   return date;
 }
 
-export const getHoursFromTimeString = (timeString: string): number {
+export const getHoursFromTimeString = (timeString: string): number => {
   const splitTime = timeString.split(':');
   const hours = parseInt(splitTime[0]);
   return hours;
 }
 
-export const getMinutesFromTimeString = (timeString: string): number {
+export const getMinutesFromTimeString = (timeString: string): number => {
   const splitTime = timeString.split(':');
   const minutes = parseInt(splitTime[1]);
   return minutes;
 }
 
 export const getTimeStringFromDate = (date: Date | string): string => {
-  date = new Date(date);
+  date = date instanceof Date ? date : new Date(date);
   const hours = pad(date.getHours(), 2);
   const minutes = pad(date.getMinutes(), 2);
   return `${hours}:${minutes}`;
