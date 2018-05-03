@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { Championship } from '@app/models';
+import { ChampionshipModel } from '@app/models';
 import { BaseService } from './base.service';
 
 @Injectable()
-export class ChampionshipService extends BaseService<Championship> {
+export class ChampionshipService extends BaseService<ChampionshipModel> {
 
   constructor(private httpClient: HttpClient) {
     super(httpClient);

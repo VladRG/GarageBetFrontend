@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { Match } from '@app/models';
+import { MatchModel } from '@app/models';
 import { ModalFormBase } from '@app/shared';
 import { ActivatedRoute } from '@angular/router';
 import { MatchService } from '@app/core';
@@ -16,20 +16,19 @@ export class NewMatchComponent implements OnInit {
     private service: MatchService
   ) { }
 
-  match: Match = new Match();
+  match: MatchModel = new MatchModel();
   championshipId = 0;
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.championshipId = parseInt(params.id);
+      this.championshipId = parseInt(params.id, 10);
       this.match.homeScore = -1;
       this.match.awayScore = -1;
       this.match.championshipId = this.championshipId;
     });
   }
 
-  save(match: Match) {
-    console.log(match);
+  save(match: MatchModel) {
     this.service.add(match).subscribe();
   }
 }

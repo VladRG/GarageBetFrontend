@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Championship, TeamModel } from '@app/models';
+import { TeamModel, ChampionshipModel } from '@app/models';
 import { ChampionshipService, TeamService } from '@app/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { Observable } from 'rxjs/Observable';
@@ -13,10 +13,10 @@ import { MatSelectChange } from '@angular/material';
 export class ChampionshipFormComponent extends HasLoadingSpinnerBase implements OnInit {
 
   @Input()
-  championship: Championship;
+  championship: ChampionshipModel;
 
   @Output()
-  save: EventEmitter<Championship> = new EventEmitter();
+  save: EventEmitter<ChampionshipModel> = new EventEmitter();
 
   @Output()
   cancel: EventEmitter<boolean> = new EventEmitter();
@@ -33,14 +33,14 @@ export class ChampionshipFormComponent extends HasLoadingSpinnerBase implements 
 
   ngOnInit() {
     if (!this.championship) {
-      this.championship = new Championship();
+      this.championship = new ChampionshipModel();
     }
 
     this.wrapObservableWithSpinner(this.fetchTeams.bind(this))
       .subscribe((data: Array<TeamModel>) => {
         this.teams = data;
         this.filterTeams();
-      })
+      });
   }
 
   fetchTeams(): Observable<Array<TeamModel>> {

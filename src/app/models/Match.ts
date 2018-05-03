@@ -1,4 +1,6 @@
-import { BaseEntity } from "./BaseEntity";
+import { BaseEntity } from './BaseEntity';
+import { ChampionshipModel } from './Championship';
+import { TeamModel } from './Team';
 
 export class Match extends BaseEntity {
   homeTeamId: number;
@@ -8,4 +10,10 @@ export class Match extends BaseEntity {
   dateTime: Date;
   championshipId: number;
   standing: string;
+}
+
+export class MatchModel extends Match {
+  championship: ChampionshipModel;
+  homeTeam: TeamModel;
+  awayTeam: TeamModel;
 }

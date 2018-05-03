@@ -13,6 +13,10 @@ export class MatchCardComponent implements OnInit {
 
   constructor() { }
 
+  getBetLink() {
+    return `/bet/${this.match.id}`;
+  }
+
   ngOnInit() {
   }
 

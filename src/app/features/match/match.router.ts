@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'match/add/:id',
     component: NewMatchComponent
   }
-]
+];
 
 @NgModule({
   imports: [

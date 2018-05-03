@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 @Injectable()
 export class ApiUrlInterceptor implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    const url = 'http://localhost:65307/';
+    const url = 'http://localhost:5000/';
     const reqUrl = req.url;
     req = req.clone({
       url: reqUrl.startsWith('!') ? reqUrl.substr(1) : url + reqUrl

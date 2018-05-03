@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from '@app/core';
-import { Match } from '@app/models';
+import { MatchModel } from '@app/models';
 import { MatDialog } from '@angular/material';
 import { NewMatchComponent } from '../new/new.component';
 
@@ -15,12 +15,12 @@ export class ListMatchesComponent implements OnInit {
     private service: MatchService,
     private dialog: MatDialog) { }
 
-  matches: Array<Match> = [];
+  matches: Array<MatchModel> = [];
 
   ngOnInit() {
     this.service.get()
-      .subscribe((response: Array<Match>) => {
-        this.matches = response
+      .subscribe((response: Array<MatchModel>) => {
+        this.matches = response;
       });
   }
 

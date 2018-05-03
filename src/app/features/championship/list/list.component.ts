@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ChampionshipService } from '@app/core';
-import { Championship } from '@app/models';
+import { ChampionshipModel } from '@app/models';
 import { Observable } from 'rxjs/Observable';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { NewChampionshipComponent } from '../new/new.component';
@@ -15,7 +15,7 @@ import { Router } from '@angular/router';
 })
 export class ChampionshipListComponent extends HasLoadingSpinnerBase implements OnInit {
 
-  championships: Array<Championship> = [];
+  championships: Array<ChampionshipModel> = [];
 
   constructor(
     private service: ChampionshipService,
@@ -26,12 +26,12 @@ export class ChampionshipListComponent extends HasLoadingSpinnerBase implements 
 
   ngOnInit() {
     this.wrapObservableWithSpinner(this.fetch.bind(this))
-      .subscribe((data: Array<Championship>) => {
+      .subscribe((data: Array<ChampionshipModel>) => {
         this.championships = data;
       });
   }
 
-  fetch(): Observable<Array<Championship>> {
+  fetch(): Observable<Array<ChampionshipModel>> {
     return this.service.get();
   }
 
@@ -41,7 +41,7 @@ export class ChampionshipListComponent extends HasLoadingSpinnerBase implements 
       height: '60%'
     });
 
-    createDialog.afterClosed().subscribe((data: Championship) => {
+    createDialog.afterClosed().subscribe((data: ChampionshipModel) => {
       if (data) {
         this.service.add(data)
           .subscribe((response) => this.ngOnInit());
@@ -49,14 +49,14 @@ export class ChampionshipListComponent extends HasLoadingSpinnerBase implements 
     });
   }
 
-  edit(championship: Championship) {
+  edit(championship: ChampionshipModel) {
     const editDialog = this.dialog.open(EditChampionshipComponent, {
       width: '420px',
       height: '60%',
       data: Object.assign({}, championship)
     });
 
-    editDialog.afterClosed().subscribe((data: Championship) => {
+    editDialog.afterClosed().subscribe((data: ChampionshipModel) => {
       if (data) {
         this.service.update(data)
           .subscribe((response) => this.ngOnInit());
