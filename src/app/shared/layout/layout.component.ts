@@ -12,9 +12,9 @@ export class AppLayoutComponent {
 
   constructor(public dialog: MatDialog, private service: AppLayoutService) { }
 
-  @HostListener('window:resize')
-  onResize(event) {
-    this.service.contentResize(event);
+  @HostListener('window:resize', ['$event.target.innerWidth'])
+  onResize(event: number) {
+    this.service.onContentResize(event);
   }
 
   login() {
@@ -30,5 +30,4 @@ export class AppLayoutComponent {
       height: '60%'
     });
   }
-
 }
