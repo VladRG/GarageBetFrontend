@@ -8,7 +8,7 @@ import { AppLoginDialog, AppRegisterDialog, VgLoadingSpinnerComponent } from './
 import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
-  MatGridListModule, MatSelectModule, MatIconModule, MatDatepickerModule, MatNativeDateModule
+  MatGridListModule, MatSelectModule, MatIconModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatMenuModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -43,6 +43,8 @@ import { DateToTimeStringPipe } from './pipes';
     MatDatepickerModule,
     MatNativeDateModule,
     MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
     BrowserAnimationsModule
   ],
   exports: [
@@ -64,6 +66,8 @@ import { DateToTimeStringPipe } from './pipes';
     MatNativeDateModule,
     MatDatepickerModule,
     MatIconModule,
+    MatToolbarModule,
+    MatMenuModule,
     CommonModule,
 
     // Pipes
