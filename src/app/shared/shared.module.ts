@@ -4,7 +4,7 @@ import { RouterModule } from '@angular/router';
 import { AppLayoutComponent } from './layout/layout.component';
 import { AppNavbarComponent } from './layout/navbar/navbar.component';
 import { AppFooterComponent } from './layout/footer/footer.component';
-import { AppLoginDialog, AppRegisterDialog, VgLoadingSpinnerComponent } from './components';
+import { AppLoginDialog, AppRegisterDialog, LoadingSpinnerComponent } from './components';
 import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
@@ -22,7 +22,7 @@ import { DateToTimeStringPipe } from './pipes';
     AppFooterComponent,
     AppLoginDialog,
     AppRegisterDialog,
-    VgLoadingSpinnerComponent,
+    LoadingSpinnerComponent,
 
     // Pipes
     DateToTimeStringPipe
@@ -49,7 +49,7 @@ import { DateToTimeStringPipe } from './pipes';
   ],
   exports: [
     AppLayoutComponent,
-    VgLoadingSpinnerComponent,
+    LoadingSpinnerComponent,
 
 
     RouterModule,

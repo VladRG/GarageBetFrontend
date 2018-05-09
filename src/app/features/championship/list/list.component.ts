@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ChampionshipService } from '@app/core';
 import { ChampionshipModel } from '@app/models';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { NewChampionshipComponent } from '../new/new.component';
 import { EditChampionshipComponent } from '@app/features/championship/edit/edit.component';

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { AppSharedModule } from '@app/shared';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AppAboutComponent, AppNotFoundComponent } from '@app/static-pages';
-import { ChampionshipModule, TeamModule, MatchModule } from '@app/features';
+import { ChampionshipModule, TeamModule, MatchModule, AuthModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
 
 
@@ -19,6 +19,7 @@ import { AppCoreModule } from '@app/core';
     ChampionshipModule,
     TeamModule,
     MatchModule,
+    AuthModule,
 
     // Top Level modules
     AppCoreModule,

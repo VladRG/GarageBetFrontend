@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TeamService, MatchService } from '@app/core';
 import { Championship, Team, Match } from '@app/models';
 import { HasLoadingSpinnerBase } from '@app/shared';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { dateTimeToDate } from '@app/utils';
 
 @Component({
@@ -27,7 +27,7 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
   @Output()
   onCancel: EventEmitter<void> = new EventEmitter();
 
-  time: string = '';
+  time = '';
   teams: Array<Team> = [];
 
   constructor(
@@ -46,7 +46,7 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
   }
 
   fetchTeams(): Observable<Array<Team>> {
-    return this.teamService.getForChampionship(this.championshipId)
+    return this.teamService.getForChampionship(this.championshipId);
   }
 
   save() {

@@ -1,10 +1,28 @@
 <mat-toolbar>
-  <button mat-button [matMenuTriggerFor]="menu">Menu</button>
   <div class="logo">
     <img src="assets/logo.png">
   </div>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>Item 1</button>
-    <button mat-menu-item>Item 2</button>
-  </mat-menu>
+  <ul class="app-navbar">
+    <li routerLink='bet' routerLinkActive="active">
+      Bet
+    </li>
+    <li routerLink='championship' routerLinkActive="active">
+      Championships
+    </li>
+    <li routerLink='team' routerLinkActive="active">
+      Teams
+    </li>
+    <li routerLink='match' routerLinkActive="active">
+      Matches
+    </li>
+  </ul>
+
+  <ul class="app-navbar">
+    <li routerLink='login' routerLinkActive="active">
+      Login
+    </li>
+    <li routerLink='register' routerLinkActive="active">
+      Register
+    </li>
+  </ul>
 </mat-toolbar>

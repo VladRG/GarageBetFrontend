@@ -6,6 +6,7 @@ export class Credentials {
 export class RegisterModel {
   email: string;
   password: string;
+  confirmPassword: string;
   confirm: string;
   firstName: string;
   lastName: string;

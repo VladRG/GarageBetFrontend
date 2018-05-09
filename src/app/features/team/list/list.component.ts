@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TeamService } from '@app/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { Team } from '@app/models';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material';
 import { NewTeamComponent } from '@app/features/team/new/new.component';
 import { EditTeamComponent } from '@app/features/team/edit/edit.component';
@@ -28,7 +28,7 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
         this.teams = data;
       }, error => {
         console.log(error);
-      })
+      });
   }
 
   fetch(): Observable<Array<Team>> {
@@ -44,7 +44,7 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
     createDialog.afterClosed().subscribe((team: Team) => {
       if (team) {
         this.service.add(team)
-          .subscribe((response) => this.ngOnInit())
+          .subscribe((response) => this.ngOnInit());
       } else {
         this.ngOnInit();
       }
@@ -58,9 +58,9 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
       data: Object.assign({}, team)
     });
 
-    editDialog.afterClosed().subscribe((team: Team) => {
-      if (team) {
-        this.service.update(team)
+    editDialog.afterClosed().subscribe((updatedTeam: Team) => {
+      if (updatedTeam) {
+        this.service.update(updatedTeam)
           .subscribe(
             (response) => this.ngOnInit(),
             error => console.log()

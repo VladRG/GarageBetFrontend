@@ -2,7 +2,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { TeamModel, ChampionshipModel } from '@app/models';
 import { ChampionshipService, TeamService } from '@app/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MatSelectChange } from '@angular/material';
 
 @Component({

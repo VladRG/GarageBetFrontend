@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BaseService } from './base.service';
 import { Team, TeamModel } from '@app/models';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class TeamService extends BaseService<Team> {
@@ -15,7 +15,7 @@ export class TeamService extends BaseService<Team> {
     return this.httpClient.get<Array<Team>>(`${this.baseUrl}/championship/${id}`);
   }
 
-  getForSelect(): Observable<Array<TeamModel>>{
+  getForSelect(): Observable<Array<TeamModel>> {
     return this.httpClient.get<Array<TeamModel>>(`${this.baseUrl}/model`);
   }
 }

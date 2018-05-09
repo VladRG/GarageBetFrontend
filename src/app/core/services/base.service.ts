@@ -1,5 +1,5 @@
-import { HttpClient } from "@angular/common/http";
-import { Observable } from 'rxjs/Observable';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { BaseEntity } from '@app/models';
 
 export class BaseService<T extends BaseEntity> {
@@ -25,7 +25,7 @@ export class BaseService<T extends BaseEntity> {
   }
 
   delete(id: number): Observable<any> {
-    return this.http.delete(this.getResourceUrl(id))
+    return this.http.delete(this.getResourceUrl(id));
   }
 
   protected getResourceUrl(id: number | string): string {

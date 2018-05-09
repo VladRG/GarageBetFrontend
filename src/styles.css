@@ -1,13 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
-
-body, html {
+body,
+html {
   width: 100%;
   height: 100%;
-}
-
-{
   font-family: 'Open Sans', sans-serif;
 }
 
@@ -22,4 +19,12 @@ body, html {
 
 .avatar-card {
   background-size: cover;
+}
+
+button:focus {
+  outline: none;
+}
+
+.button-row>button {
+  margin: 0 4px;
 }

@@ -1,29 +1,46 @@
 :host {
   height: 80px;
+  align-items: none;
+  background-color: rgba(248, 249, 250, 0.8);
+}
+
+.mat-toolbar {
+  height: 100%;
+  justify-content: space-between !important;
   display: flex;
-  background-color: rgba(248,249,250, 0.8);
 }
 
 .logo {
   max-height: 80px;
 }
 
-  .logo > img {
-    max-height: 80px;
-  }
-
-nav {
-  padding: 0px 22px;
-  background-color: transparent;
-  flex-grow: 1;
+.logo>img {
+  max-height: 80px;
 }
 
-.navbar-collapse {
-  display: flex;
+.app-navbar {
+  list-style: none;
+  margin-top: 46px;
+  margin-bottom: 2px;
+  height: 24px;
 }
 
-.main-menu {
-  flex-grow: 1;
+.app-navbar>li {
+  display: inline;
+  padding: 0 16px;
+  font-size: 18px;
   text-align: center;
-  align-content: center;
+  font-weight: 500;
+  cursor: pointer;
+  min-width: 80px !important;
+}
+
+.app-navbar>li:hover,
+.active {
+  border-bottom: 3px solid orange;
+  color: rgb(50, 50, 50) !important;
+}
+
+.app-navbar>li:focus {
+  outline: none;
 }
