@@ -23,4 +23,12 @@ export class NewBetComponent {
       this.match = response;
     });
   }
+
+  save() {
+
+  }
+
+  cancel() {
+
+  }
 }

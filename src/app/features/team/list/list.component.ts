@@ -23,7 +23,7 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
   }
 
   ngOnInit() {
-    this.wrapObservableWithSpinner(this.fetch.bind(this))
+    this.wrapObservableWithSpinner(this.service.get())
       .subscribe((data: Array<Team>) => {
         this.teams = data;
       }, error => {

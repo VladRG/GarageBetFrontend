@@ -4,6 +4,7 @@ import { Match } from './Match';
 
 export class Championship extends BaseEntity {
   name: string;
+  competitiveYear: string;
 }
 
 export class ChampionshipModel extends Championship {

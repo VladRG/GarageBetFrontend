@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Match } from '@app/models';
+import { MatchModel } from '@app/models';
 
 @Component({
   selector: 'app-match-card',
@@ -9,7 +9,7 @@ import { Match } from '@app/models';
 export class MatchCardComponent implements OnInit {
 
   @Input()
-  match: Match;
+  match: MatchModel;
 
   constructor() { }
 
@@ -17,7 +17,13 @@ export class MatchCardComponent implements OnInit {
     return `/bet/${this.match.id}`;
   }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onStats() {
+
   }
 
+  onEdit() {
+
+  }
 }

@@ -17,12 +17,18 @@
     </li>
   </ul>
 
-  <ul class="app-navbar">
+  <ul class="app-navbar" *ngIf="!service.isLoggedIn()">
     <li routerLink='login' routerLinkActive="active">
       Login
     </li>
     <li routerLink='register' routerLinkActive="active">
       Register
+    </li>
+  </ul>
+
+  <ul class="app-navbar" *ngIf="service.isLoggedIn()">
+    <li (click)="logout()">
+      Logout
     </li>
   </ul>
 </mat-toolbar>

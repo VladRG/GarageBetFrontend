@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
-import { AppAuthService } from './auth/auth.service';
-import { AppAuthGuard } from './auth/auth.guard';
-import { ApiUrlInterceptor } from './api-url.interceptor';
+import { AppAuthGuard } from './guards';
+import { ApiUrlInterceptor, TokenInterceptor } from './interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChampionshipService, TeamService, MatchService, AppLayoutService } from './services';
+import { ChampionshipService, TeamService, MatchService, AppLayoutService, AppAuthService } from './services';
 
 @NgModule({
   declarations: [],
@@ -14,7 +13,8 @@ import { ChampionshipService, TeamService, MatchService, AppLayoutService } from
     ChampionshipService,
     TeamService,
     MatchService,
-    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   exports: []
 })

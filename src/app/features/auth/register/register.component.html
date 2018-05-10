@@ -24,9 +24,6 @@
         <mat-form-field>
           <input required minlength="8" matInput type="password" name="confirmPassword" #confirmPassword='ngModel' [(ngModel)]='user.confirmPassword'
             placeholder='Confirm Password'>
-          <mat-error *ngIf="!checkPasswordMatch(password, confirmPassword)">
-            Must match the password.
-          </mat-error>
         </mat-form-field>
 
         <mat-form-field>
@@ -42,7 +39,9 @@
             The last name is required.
           </mat-error>
         </mat-form-field>
-
+        <mat-error *ngIf="!checkPasswordMatch(password, confirmPassword)">
+          Must match the password.
+        </mat-error>
         <div class="button-row">
           <button mat-raised-button color="primary" (click)='register(email)'>
             REGISTER

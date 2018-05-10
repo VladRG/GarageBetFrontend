@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { AppLayoutComponent } from './layout/layout.component';
-import { AppNavbarComponent } from './layout/navbar/navbar.component';
-import { AppFooterComponent } from './layout/footer/footer.component';
-import { AppLoginDialog, AppRegisterDialog, LoadingSpinnerComponent } from './components';
+import { LoadingSpinnerComponent } from './components';
 import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
@@ -17,11 +14,6 @@ import { DateToTimeStringPipe } from './pipes';
 
 @NgModule({
   declarations: [
-    AppLayoutComponent,
-    AppNavbarComponent,
-    AppFooterComponent,
-    AppLoginDialog,
-    AppRegisterDialog,
     LoadingSpinnerComponent,
 
     // Pipes
@@ -48,9 +40,7 @@ import { DateToTimeStringPipe } from './pipes';
     BrowserAnimationsModule
   ],
   exports: [
-    AppLayoutComponent,
     LoadingSpinnerComponent,
-
 
     RouterModule,
     FormsModule,
@@ -73,9 +63,6 @@ import { DateToTimeStringPipe } from './pipes';
     // Pipes
     DateToTimeStringPipe
   ],
-  entryComponents: [
-    AppLoginDialog,
-    AppRegisterDialog
-  ]
+  entryComponents: []
 })
 export class AppSharedModule { }

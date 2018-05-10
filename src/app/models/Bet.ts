@@ -13,4 +13,6 @@ export class BetModel extends Bet {
   homeTeam: TeamModel;
   awayTeam: TeamModel;
   match: MatchModel;
+  homeScore: number;
+  awayScore: number;
 }

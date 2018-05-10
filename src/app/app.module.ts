@@ -8,6 +8,7 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AppAboutComponent, AppNotFoundComponent } from '@app/static-pages';
 import { ChampionshipModule, TeamModule, MatchModule, AuthModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
+import { AppLayoutModule } from '@app/layout';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AppCoreModule } from '@app/core';
     // Top Level modules
     AppCoreModule,
     AppSharedModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AppLayoutModule
   ],
   bootstrap: [AppComponent]
 })

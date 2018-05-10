@@ -25,14 +25,10 @@ export class ChampionshipListComponent extends HasLoadingSpinnerBase implements 
   }
 
   ngOnInit() {
-    this.wrapObservableWithSpinner(this.fetch.bind(this))
+    this.wrapObservableWithSpinner(this.service.get())
       .subscribe((data: Array<ChampionshipModel>) => {
         this.championships = data;
       });
-  }
-
-  fetch(): Observable<Array<ChampionshipModel>> {
-    return this.service.get();
   }
 
   create() {

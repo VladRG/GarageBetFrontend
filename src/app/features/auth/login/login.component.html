@@ -1,3 +1,22 @@
-<p>
-  login works!
-</p>
+<mat-card class="col-xs-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+  <mat-card-subtitle>
+    <b>Login</b>
+  </mat-card-subtitle>
+  <mat-card-content>
+    <form #loginForm="ngForm">
+      <mat-form-field>
+        <input required [(ngModel)]="credentials.email" name="email" type="email" matInput #email="ngModel" placeholder="Type your email address">
+        <mat-error *ngIf="email.invalid" align="end">Must be an email address.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input required type="password" [(ngModel)]="credentials.password" name="password" matInput #password="ngModel" min-length="5"
+          placeholder="Type your password">
+        <mat-error *ngIf="password.invalid" align="end">Must have more than 5 characters.</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button [disabled]="loginForm.form.invalid" class="btn-primary" (click)='onLogin()'>Login</button>
+    <button mat-button (click)='onCancel()'>Cancel</button>
+  </mat-card-actions>
+</mat-card>

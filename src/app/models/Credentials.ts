@@ -11,3 +11,9 @@ export class RegisterModel {
   firstName: string;
   lastName: string;
 }
+
+export class UserModel {
+  firstName: string;
+  lastName: string;
+  email: string;
+}

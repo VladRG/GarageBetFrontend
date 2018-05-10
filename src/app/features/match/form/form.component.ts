@@ -39,7 +39,7 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
 
 
   ngOnInit() {
-    this.wrapObservableWithSpinner(this.fetchTeams.bind(this))
+    this.wrapObservableWithSpinner(this.teamService.getForChampionship(this.championshipId))
       .subscribe((data: Array<Team>) => {
         this.teams = data;
       }, error => console.error);

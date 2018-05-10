@@ -1,28 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { RegisterModel } from '@app/models';
+import { AppAuthService } from '@app/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent {
 
-  constructor() {
+  constructor(private service: AppAuthService, private router: Router) {
     this.user = new RegisterModel();
   }
 
   user: RegisterModel;
 
-  register(el) {
-    console.log(el);
+  register() {
+    this.service.register(this.user)
+      .subscribe(response => {
+        this.router.navigateByUrl('');
+      });
   }
 
   checkPasswordMatch(password, confirmPassword): boolean {
-    console.log('Checking');
     return password.value === confirmPassword.value;
   }
-
-  ngOnInit() { }
-
 }

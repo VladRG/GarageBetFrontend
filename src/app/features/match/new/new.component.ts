@@ -31,4 +31,8 @@ export class NewMatchComponent implements OnInit {
   save(match: MatchModel) {
     this.service.add(match).subscribe();
   }
+
+  cancel() {
+
+  }
 }

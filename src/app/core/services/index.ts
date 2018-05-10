@@ -4,3 +4,4 @@ export * from './match.service';
 export * from './base.service';
 export * from './bet.service';
 export * from './layout.service';
+export * from './auth.service';

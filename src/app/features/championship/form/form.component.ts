@@ -36,15 +36,11 @@ export class ChampionshipFormComponent extends HasLoadingSpinnerBase implements 
       this.championship = new ChampionshipModel();
     }
 
-    this.wrapObservableWithSpinner(this.fetchTeams.bind(this))
+    this.wrapObservableWithSpinner(this.teamService.getForSelect())
       .subscribe((data: Array<TeamModel>) => {
         this.teams = data;
         this.filterTeams();
       });
-  }
-
-  fetchTeams(): Observable<Array<TeamModel>> {
-    return this.teamService.getForSelect();
   }
 
   onTeamSelected(event: MatSelectChange) {
