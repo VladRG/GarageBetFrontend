@@ -12,7 +12,7 @@ export class NewBetComponent {
 
   constructor(private route: ActivatedRoute, private service: BetService, private matchService: MatchService) {
     this.route.params.subscribe((params) => {
-
+      this.init(params.matchId);
     });
   }
 

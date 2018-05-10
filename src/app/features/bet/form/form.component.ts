@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { BetModel } from '@app/models';
+import { BetModel, MatchModel } from '@app/models';
 
 @Component({
   selector: 'app-bet-form',
@@ -11,13 +11,15 @@ export class BetFormComponent implements OnInit {
   constructor() { }
 
   @Input()
-  bet: BetModel;
+  match: MatchModel;
 
   @Output()
   save: EventEmitter<BetModel> = new EventEmitter();
 
   @Output()
   cancel: EventEmitter<BetModel> = new EventEmitter();
+
+  bet: BetModel;
 
   onSave() {
     this.save.emit(this.bet);
@@ -27,5 +29,8 @@ export class BetFormComponent implements OnInit {
     this.cancel.emit();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.bet = new BetModel();
+    console.log(this.match);
+  }
 }

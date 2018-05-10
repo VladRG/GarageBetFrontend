@@ -10,7 +10,7 @@
     <div>{{match.championship.name}}</div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" [routerLink]="getBetLink()">BET</button>
+    <button mat-raised-button color="primary" (click)='bet()'>BET</button>
     <button mat-raised-button (click)="onStats()" color="basic">STATS</button>
     <button mat-button (click)="onEdit()">EDIT</button>
   </mat-card-actions>

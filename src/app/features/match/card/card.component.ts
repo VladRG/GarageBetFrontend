@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { MatchModel } from '@app/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-match-card',
@@ -11,10 +12,10 @@ export class MatchCardComponent implements OnInit {
   @Input()
   match: MatchModel;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  getBetLink() {
-    return `/bet/${this.match.id}`;
+  bet() {
+    this.router.navigateByUrl(`bet/match/${this.match.id}`);
   }
 
   ngOnInit() { }

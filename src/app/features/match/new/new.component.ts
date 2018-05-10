@@ -1,7 +1,7 @@
 import { Component, OnInit, } from '@angular/core';
 import { MatchModel } from '@app/models';
 import { ModalFormBase } from '@app/shared';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatchService } from '@app/core';
 
 @Component({
@@ -13,6 +13,7 @@ export class NewMatchComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private service: MatchService
   ) { }
 
@@ -29,10 +30,12 @@ export class NewMatchComponent implements OnInit {
   }
 
   save(match: MatchModel) {
-    this.service.add(match).subscribe();
+    this.service.add(match).subscribe((response) => {
+      this.router.navigateByUrl('match');
+    });
   }
 
   cancel() {
-
+    this.router.navigateByUrl('match');
   }
 }

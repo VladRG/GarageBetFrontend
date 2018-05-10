@@ -9,6 +9,7 @@ import { AppAboutComponent, AppNotFoundComponent } from '@app/static-pages';
 import { ChampionshipModule, TeamModule, MatchModule, AuthModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
 import { AppLayoutModule } from '@app/layout';
+import { BetModule } from '@app/features/bet/bet.module';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { AppLayoutModule } from '@app/layout';
     ChampionshipModule,
     TeamModule,
     MatchModule,
+    BetModule,
     AuthModule,
 
     // Top Level modules

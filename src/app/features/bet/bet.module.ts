@@ -7,8 +7,8 @@ import { BetFormComponent } from './form/form.component';
 
 @NgModule({
   declarations: [
-	NewBetComponent,
-	BetFormComponent
+    NewBetComponent,
+    BetFormComponent
   ],
   imports: [
     CommonModule,

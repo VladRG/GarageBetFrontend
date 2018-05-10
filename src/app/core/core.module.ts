@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { AppAuthGuard } from './guards';
 import { ApiUrlInterceptor, TokenInterceptor } from './interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChampionshipService, TeamService, MatchService, AppLayoutService, AppAuthService } from './services';
+import { ChampionshipService, TeamService, MatchService, AppLayoutService, AppAuthService, BetService } from './services';
 
 @NgModule({
   declarations: [],
@@ -12,6 +12,7 @@ import { ChampionshipService, TeamService, MatchService, AppLayoutService, AppAu
     AppLayoutService,
     ChampionshipService,
     TeamService,
+    BetService,
     MatchService,
     { provide: HTTP_INTERCEPTORS, useClass: ApiUrlInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }

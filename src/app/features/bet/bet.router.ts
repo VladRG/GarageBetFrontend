@@ -4,7 +4,7 @@ import { NewBetComponent } from './new/new.component';
 
 const routes: Routes = [
   {
-    path: '/bet/match/:matchId',
+    path: 'bet/match/:matchId',
     component: NewBetComponent,
   }
 ];
