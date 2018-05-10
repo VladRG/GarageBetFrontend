@@ -2,29 +2,38 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class AppLayoutService {
+
+  screenType: ScreenType;
+
   constructor() {
-    this.setLayoutStyle(window.innerWidth);
+    this.setType(window.innerWidth);
   }
 
-  layoutType: AppLayoutStyle = AppLayoutStyle.DESKTOP;
-
-  onContentResize(width: number): void {
-    this.setLayoutStyle(width);
-  }
-
-  private setLayoutStyle(width: number): void {
+  setType(width: number) {
     if (width > 1200) {
-      this.layoutType = AppLayoutStyle.DESKTOP;
-    } else if (width > 760) {
-      this.layoutType = AppLayoutStyle.TABLET;
+      this.screenType = ScreenType.DESKTOP;
+    } else if (width > 768) {
+      this.screenType = ScreenType.TABLET;
     } else {
-      this.layoutType = AppLayoutStyle.PHONE;
+      this.screenType = ScreenType.PHONE;
     }
+  }
+
+  isDesktopMode(): boolean {
+    return this.screenType === ScreenType.DESKTOP;
+  }
+
+  isTabletMode(): boolean {
+    return this.screenType === ScreenType.TABLET;
+  }
+
+  isPhoneMode(): boolean {
+    return this.screenType === ScreenType.PHONE;
   }
 }
 
-export enum AppLayoutStyle {
-  PHONE = 'phone',
+export enum ScreenType {
+  DESKTOP = 'desktop',
   TABLET = 'tablet',
-  DESKTOP = 'desktop'
+  PHONE = 'phone'
 }

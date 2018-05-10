@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AppAuthService } from '@app/core';
+import { AppAuthService, AppLayoutService } from '@app/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,7 +8,7 @@ import { AppAuthService } from '@app/core';
 })
 export class AppNavbarComponent {
 
-  constructor(private service: AppAuthService) { }
+  constructor(private service: AppAuthService, private layout: AppLayoutService) { }
 
   logout() {
     this.service.logout();

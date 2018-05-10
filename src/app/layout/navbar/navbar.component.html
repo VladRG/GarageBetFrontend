@@ -1,7 +1,8 @@
-<mat-toolbar>
+<mat-toolbar *ngIf="layout.screenType !== 'phone'">
   <div class="logo">
     <img src="assets/logo.png">
   </div>
+
   <ul class="app-navbar">
     <li routerLink='bet' routerLinkActive="active">
       Bet
@@ -31,4 +32,29 @@
       Logout
     </li>
   </ul>
+</mat-toolbar>
+
+<mat-toolbar *ngIf="layout.screenType === 'phone'">
+  <div class="logo">
+    <img src="assets/logo.png">
+  </div>
+  <div>
+    <button mat-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_horiz</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink='bet' routerLinkActive="active">
+        Bet
+      </button>
+      <button mat-menu-item routerLink='championship' routerLinkActive="active">
+        Championships
+      </button>
+      <button mat-menu-item routerLink='team' routerLinkActive="active">
+        Teams
+      </button>
+      <button mat-menu-item routerLink='match' routerLinkActive="active">
+        Matches
+      </button>
+    </mat-menu>
+  </div>
 </mat-toolbar>

@@ -13,6 +13,6 @@ export class AppLayoutComponent {
 
   @HostListener('window:resize', ['$event.target.innerWidth'])
   onResize(event: number) {
-    this.service.onContentResize(event);
+    this.service.setType(event);
   }
 }
