@@ -4,11 +4,13 @@ import { CommonModule } from '@angular/common';
 import { BetRoutingModule } from './bet.router';
 import { NewBetComponent } from './new/new.component';
 import { BetFormComponent } from './form/form.component';
+import { BetListComponent } from './list/list.component';
 
 @NgModule({
   declarations: [
     NewBetComponent,
-    BetFormComponent
+    BetFormComponent,
+    BetListComponent
   ],
   imports: [
     CommonModule,

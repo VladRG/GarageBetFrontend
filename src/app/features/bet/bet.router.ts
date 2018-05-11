@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NewBetComponent } from './new/new.component';
+import { BetListComponent } from './list/list.component';
 
 const routes: Routes = [
+  {
+    path: 'bet',
+    component: BetListComponent
+  },
   {
     path: 'bet/match/:matchId',
     component: NewBetComponent,

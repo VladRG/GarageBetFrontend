@@ -1,16 +1,14 @@
-<form #betForm="ngForm">
-  <div class="row">
-    <mat-form-field class="col-md-6 col-xs-12">
-      <mat-select name="homeScore" [(ngModel)]="bet.homeScore" placeholder="{{match.homeTeam.name}}'s Goals">
-        <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field class="col-md-6 col-xs-12">
-      <mat-select name="awayScore" [(ngModel)]="bet.homeScore" placeholder="{{match.awayTeam.name}}'s Goals">
-        <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
+<form #betForm="ngForm" *ngIf="match">
+  <mat-form-field>
+    <mat-select name="homeScore" [(ngModel)]="bet.homeScore" placeholder="{{match.homeTeam.name}}'s Goals">
+      <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select name="awayScore" [(ngModel)]="bet.awayScore" placeholder="{{match.awayTeam.name}}'s Goals">
+      <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
+    </mat-select>
+  </mat-form-field>
   <div class="button-row">
     <button mat-button color="primary" (click)="onSave()">SAVE</button>
     <button mat-button color="warn" (click)="onCancel()">CANCEL</button>

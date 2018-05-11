@@ -8,5 +8,6 @@ export class BetService extends BaseService<BetModel> {
 
   constructor(private httpClient: HttpClient) {
     super(httpClient);
+    this.baseUrl = 'bet';
   }
 }
