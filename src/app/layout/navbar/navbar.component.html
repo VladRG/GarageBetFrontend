@@ -16,6 +16,9 @@
     <li routerLink='match' routerLinkActive="active">
       Matches
     </li>
+    <li routerLink='leaderboard' routerLinkActive="active">
+      Leaderboard
+    </li>
   </ul>
 
   <ul class="app-navbar" *ngIf="!service.isLoggedIn()">
@@ -28,6 +31,9 @@
   </ul>
 
   <ul class="app-navbar" *ngIf="service.isLoggedIn()">
+    <li routerLink='stats' routerLinkActive="active">
+      My Stats
+    </li>
     <li (click)="logout()">
       Logout
     </li>

@@ -1,0 +1,76 @@
+<div class="row" *ngIf="stats">
+  <div class="col-xs-12 col-md-8 col-xl-6 offset-md-2 offset-xl-3">
+    <div class="primary-color">
+      <h2>Stats</h2>
+      <hr/>
+    </div>
+    <div class="flex-row">
+      <mat-card class=" stat-card">
+        <mat-card-subtitle>
+          Won
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="color-won text-center">
+            {{stats.won}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class=" stat-card">
+        <mat-card-subtitle>
+          Results
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="color-results text-center">
+            {{stats.result}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class=" stat-card">
+        <mat-card-subtitle>
+          Lost
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="color-lost text-center">
+            {{stats.lost}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class=" stat-card">
+        <mat-card-subtitle>
+          Points
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="color-lost text-center">
+            {{stats.won * 3 + stats.result}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <mat-card-subtitle>
+          # Bets
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="text-center">
+            {{stats.won + stats.result + stats.lost}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="stat-card">
+        <mat-card-subtitle>
+          (%)
+        </mat-card-subtitle>
+        <mat-card-content>
+          <h1 class="text-center">
+            {{getPercentage(stats) | number:'1.1-2'}}
+          </h1>
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+  </div>
+</div>

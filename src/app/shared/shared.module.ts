@@ -11,10 +11,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DateToTimeStringPipe } from './pipes';
+import { MatchBetCardComponent } from './components';
 
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
+    MatchBetCardComponent,
 
     // Pipes
     DateToTimeStringPipe
@@ -41,6 +43,7 @@ import { DateToTimeStringPipe } from './pipes';
   ],
   exports: [
     LoadingSpinnerComponent,
+    MatchBetCardComponent,
 
     RouterModule,
     FormsModule,

@@ -1,11 +1,12 @@
 :host {
   height: 80px;
   align-items: none;
-  background-color: rgba(248, 249, 250, 0.8);
+  background-color: rgba(10, 45, 71, 0.7);
 }
 
 .mat-toolbar {
   height: 100%;
+  background: transparent;
   justify-content: space-between !important;
   display: flex;
 }
@@ -33,12 +34,12 @@
   font-weight: 500;
   cursor: pointer;
   min-width: 80px !important;
+  color: #3087C6;
 }
 
 .app-navbar>li:hover,
 .active {
-  border-bottom: 3px solid orange;
-  color: rgb(50, 50, 50) !important;
+  border-bottom: 3px solid #C67600;
 }
 
 .app-navbar>li:focus {

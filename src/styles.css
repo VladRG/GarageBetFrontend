@@ -1,11 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 body,
 html {
   width: 100%;
   height: 100%;
   font-family: 'Open Sans', sans-serif;
+  background-image: url('assets/background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .mat-form-field {
@@ -31,4 +35,55 @@ button:focus {
 
 button:focus {
   outline: none;
+}
+
+.mat-card {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.mat-fab.mat-primary,
+.mat-flat-button.mat-primary,
+.mat-mini-fab.mat-primary,
+.mat-raised-button.mat-primary {
+  background-color: #114E7A;
+}
+
+.mat-fab,
+.mat-flat-button,
+.mat-mini-fab,
+.mat-raised-button {
+  background-color: #1C7FC6;
+  color: white;
+}
+
+.match-card-won {
+  border-left: 4px solid green;
+}
+
+.won-color {
+  color: green !important;
+}
+
+.match-card-result {
+  border-left: 4px solid yellow;
+}
+
+.result-color {
+  color: yellow !important;
+}
+
+.match-card-lost {
+  border-left: 4px solid red;
+}
+
+.lost-color {
+  color: red !important;
+}
+
+.primary-color {
+  color: #5798C6 !important;
+}
+
+.row {
+  width: 100%;
 }

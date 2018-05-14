@@ -1,5 +1,5 @@
 import { Component, OnInit, } from '@angular/core';
-import { MatchModel } from '@app/models';
+import { MatchModel, MatchBetModel } from '@app/models';
 import { ModalFormBase } from '@app/shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatchService } from '@app/core';
@@ -17,7 +17,7 @@ export class NewMatchComponent implements OnInit {
     private service: MatchService
   ) { }
 
-  match: MatchModel = new MatchModel();
+  match: MatchBetModel = new MatchBetModel();
   championshipId = 0;
 
   ngOnInit() {

@@ -13,7 +13,7 @@
     </mat-form-field>
 
     <mat-form-field>
-      <mat-select placeholder="Teams" (change)="onTeamSelected($event)">
+      <mat-select placeholder="Teams" (selectionChange)="onTeamSelected($event)">
         <mat-option [value]="team" *ngFor="let team of availableTeams">{{team.name}}</mat-option>
       </mat-select>
       <mat-hint align="end">Add teams to championship.</mat-hint>

@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12 col-md-8 offset-md-2">
+    <div *ngIf="match" class="primary-color">
+      <h3 class="text-center">{{match.homeTeam.name}} {{match.homeScore}} - {{match.awayScore}} {{match.awayTeam.name}}</h3>
+      <h4>{{match.championship.name}}</h4>
+      <h5>
+        <span class="won-color">Won: {{won}}</span> /
+        <span class="result-color">Results: {{results}}</span> /
+        <span class="lost-color"> Lost: {{lost}}</span> / Percentage: {{getPercentage() | number:'1.1-2'}}
+      </h5>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let stat of matchStats">
+        <mat-card [ngClass]="service.checkBetState(stat.betState)" class="col-md-6 col-xs-12">
+          <mat-card-subtitle>
+            <h4 class="text-center">{{stat.user.firstName}} {{stat.user.lastName}}</h4>
+          </mat-card-subtitle>
+          <mat-card-content>
+            <div>
+              <h3 class="text-center">{{stat.homeScore}} - {{stat.awayScore}}</h3>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </ng-container>
+    </div>
+  </div>
+</div>

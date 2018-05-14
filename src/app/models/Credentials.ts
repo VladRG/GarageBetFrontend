@@ -17,3 +17,10 @@ export class UserModel {
   lastName: string;
   email: string;
 }
+
+export class UserStats {
+  won: number;
+  result: number;
+  lost: number;
+  user: UserModel;
+}

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListMatchesComponent } from './list/list.component';
 import { NewMatchComponent } from './new/new.component';
+import { EndMatchComponent } from './end/end.component';
+import { MatchStatsComponent } from './match-stats/match-stats.component';
 
 const routes: Routes = [
   {
@@ -11,6 +13,14 @@ const routes: Routes = [
   {
     path: 'match/add/:id',
     component: NewMatchComponent
+  },
+  {
+    path: 'match/end/:id',
+    component: EndMatchComponent
+  },
+  {
+    path: 'match/stats/:id',
+    component: MatchStatsComponent
   }
 ];
 

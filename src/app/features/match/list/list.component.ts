@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatchService } from '@app/core';
-import { MatchModel } from '@app/models';
+import {  MatchBetModel } from '@app/models';
 import { MatDialog } from '@angular/material';
 import { NewMatchComponent } from '../new/new.component';
 import { HasLoadingSpinnerBase } from '@app/shared';
@@ -18,12 +18,12 @@ export class ListMatchesComponent extends HasLoadingSpinnerBase implements OnIni
     super();
   }
 
-  matches: Array<MatchModel> = [];
+  matchBets: Array<MatchBetModel> = [];
 
   ngOnInit() {
-    this.service.get()
-      .subscribe((response: Array<MatchModel>) => {
-        this.matches = response;
+    this.service.getMatchBets()
+      .subscribe((response: Array<MatchBetModel>) => {
+        this.matchBets = response;
       });
   }
 
