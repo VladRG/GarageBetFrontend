@@ -13,7 +13,7 @@ export class MatchBetCardComponent implements OnInit {
   @Input()
   matchBet: MatchBetModel;
 
-  constructor(private router: Router, private service: MatchService) { }
+  constructor(private router: Router, public service: MatchService) { }
 
   bet() {
     this.router.navigateByUrl(`bet/match/${this.matchBet.match.id}`);

@@ -10,9 +10,9 @@
           </app-championship-card>
         </ng-container>
       </div>
-      <div class="button-row">
-        <button mat-button (click)="create()">CREATE</button>
-      </div>
+      <!-- <div class="button-row">
+        <button *ngIf='authService.isAdmin' mat-button (click)="create()">CREATE</button>
+      </div> -->
     </div>
   </div>
 </app-loading-spinner>

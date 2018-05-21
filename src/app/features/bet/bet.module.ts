@@ -5,12 +5,14 @@ import { BetRoutingModule } from './bet.router';
 import { NewBetComponent } from './new/new.component';
 import { BetFormComponent } from './form/form.component';
 import { BetListComponent } from './list/list.component';
+import { EditBetComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
     NewBetComponent,
     BetFormComponent,
-    BetListComponent
+    BetListComponent,
+    EditBetComponent
   ],
   imports: [
     CommonModule,

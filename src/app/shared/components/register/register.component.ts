@@ -29,7 +29,7 @@ export class AppRegisterDialog {
       .subscribe(response => {
         this.dialogRef.close();
       }, error => {
-        this.errorMessage = error
+        this.errorMessage = error;
       });
   }
 

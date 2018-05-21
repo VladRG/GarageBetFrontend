@@ -8,7 +8,7 @@ import { AppAuthService, AppLayoutService } from '@app/core';
 })
 export class AppNavbarComponent {
 
-  constructor(private service: AppAuthService, private layout: AppLayoutService) { }
+  constructor(private service: AppAuthService, public layout: AppLayoutService) { }
 
   logout() {
     this.service.logout();

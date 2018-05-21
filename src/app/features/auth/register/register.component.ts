@@ -28,4 +28,8 @@ export class RegisterComponent extends HasLoadingSpinnerBase {
   checkPasswordMatch(password, confirmPassword): boolean {
     return password.value === confirmPassword.value;
   }
+
+  cancel() {
+    this.router.navigateByUrl('/');
+  }
 }

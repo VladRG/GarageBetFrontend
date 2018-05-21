@@ -12,11 +12,15 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { DateToTimeStringPipe } from './pipes';
 import { MatchBetCardComponent } from './components';
+import { AppRegisterDialog } from './components/register/register.component';
+import { AppLoginDialog } from './components/login/login.component';
 
 @NgModule({
   declarations: [
     LoadingSpinnerComponent,
     MatchBetCardComponent,
+    AppLoginDialog,
+    AppRegisterDialog,
 
     // Pipes
     DateToTimeStringPipe

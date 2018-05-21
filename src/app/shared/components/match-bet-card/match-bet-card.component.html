@@ -1,4 +1,4 @@
-<mat-card [ngClass]='service.checkBetState(matchBet.betState)'>
+<mat-card [ngClass]='service.checkBetState(matchBet)'>
   <mat-card-content class="text-left">
     <div>
       <h5>{{matchBet.match.homeTeam.name}} - {{matchBet.match.awayTeam.name}}</h5>
@@ -7,15 +7,16 @@
       <div>Match Score</div>
       {{matchBet.homeScore}} - {{matchBet.awayScore}}
     </div>
-    ({{matchBet.bet.homeScore}} - {{matchBet.bet.awayScore}})
-
+    <div *ngIf='matchBet.betState !== 0'>
+      ({{matchBet.bet.homeScore}} - {{matchBet.bet.awayScore}})
+    </div>
     <div>{{matchBet.match.dateTime | date}} at {{matchBet.match.dateTime | dateToTimeString}}</div>
     <div>{{matchBet.championship.name}}</div>
   </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button color="primary" (click)='bet()'>BET</button>
     <button mat-raised-button (click)="onStats()" color="basic">STATS</button>
-    <button mat-button (click)="onEdit()">EDIT</button>
-    <button mat-button (click)="end()">END</button>
+    <!-- <button mat-button (click)="onEdit()">EDIT</button>
+    <button mat-button (click)="end()">END</button> -->
   </mat-card-actions>
 </mat-card>

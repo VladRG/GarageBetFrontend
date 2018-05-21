@@ -14,6 +14,7 @@ export class AppAuthService {
 
   private TOKEN_KEY = 'access_token';
   private USER_KEY = 'user';
+  private ADMINUSER = 'gheorghitavladnicolae@gmail.com';
 
   private user: UserModel;
 
@@ -37,12 +38,15 @@ export class AppAuthService {
     return !!this.getToken();
   }
 
+  isAdmin() {
+    return this.user.email === this.ADMINUSER;
+  }
+
   logout() {
     localStorage.removeItem(this.TOKEN_KEY);
     localStorage.removeItem(this.USER_KEY);
     this.router.navigateByUrl('login');
   }
-
 
   storeUser(user: UserModel) {
     localStorage.setItem(this.USER_KEY, JSON.stringify(user));

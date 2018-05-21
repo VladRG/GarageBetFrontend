@@ -19,10 +19,12 @@ export class MatchService extends BaseService<MatchModel> {
     return this.httpClient.get<Array<MatchStats>>(`match/stats/${id}`);
   }
 
-  checkBetState(betState: BetState): string {
-    switch (betState) {
-      case BetState.CanBet:
-        return 'match-card-can-bet';
+  checkBetState(matchBet: MatchBetModel): string {
+    if (matchBet.betState === BetState.CanBet || matchBet.match.homeScore < 0) {
+      return 'match-card-can-bet';
+    }
+
+    switch (matchBet.betState) {
       case BetState.NotAvailable:
         return 'match-card-not-available';
       case BetState.Won:
@@ -31,8 +33,6 @@ export class MatchService extends BaseService<MatchModel> {
         return 'match-card-result';
       case BetState.Lost:
         return 'match-card-lost';
-      default:
-        return '';
     }
   }
 }
