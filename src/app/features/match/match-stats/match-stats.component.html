@@ -9,9 +9,9 @@
         <span class="lost-color"> Lost: {{lost}}</span> / Percentage: {{getPercentage() | number:'1.1-2'}}
       </h5>
     </div>
-    <div class="row">
+    <div class="flex-row">
       <ng-container *ngFor="let stat of matchStats">
-        <mat-card [ngClass]="service.checkBetState(stat.betState)" class="col-md-6 col-xs-12">
+        <mat-card [ngClass]="service.checkBet(stat.betState)" class="match-stat-card">
           <mat-card-subtitle>
             <h4 class="text-center">{{stat.user.firstName}} {{stat.user.lastName}}</h4>
           </mat-card-subtitle>

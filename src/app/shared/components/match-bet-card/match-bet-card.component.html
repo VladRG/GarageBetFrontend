@@ -3,20 +3,24 @@
     <div>
       <h5>{{matchBet.match.homeTeam.name}} - {{matchBet.match.awayTeam.name}}</h5>
     </div>
-    <div *ngIf="matchBet.homeScore > -1 && matchBet.awayScore > -1">
-      <div>Match Score</div>
-      {{matchBet.homeScore}} - {{matchBet.awayScore}}
+    <div *ngIf="matchBet.match.homeScore > -1 && matchBet.match.awayScore > -1">
+      Match Score:
+      <b>{{matchBet.match.homeScore}} - {{matchBet.match.awayScore}}</b>
     </div>
-    <div *ngIf='matchBet.betState !== 0'>
-      ({{matchBet.bet.homeScore}} - {{matchBet.bet.awayScore}})
+    <div *ngIf='matchBet.betState !== 0 && matchBet.betState !== 4'>
+      Bet:
+      <b>{{matchBet.bet.homeScore}} - {{matchBet.bet.awayScore}}</b>
+    </div>
+    <div *ngIf='matchBet.betState === 4'>
+      You have not set a bet for this match
     </div>
     <div>{{matchBet.match.dateTime | date}} at {{matchBet.match.dateTime | dateToTimeString}}</div>
-    <div>{{matchBet.championship.name}}</div>
+    <div>Competition:
+      <b>{{matchBet.championship.name}}</b>
+    </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" (click)='bet()'>BET</button>
-    <button mat-raised-button (click)="onStats()" color="basic">STATS</button>
-    <!-- <button mat-button (click)="onEdit()">EDIT</button>
-    <button mat-button (click)="end()">END</button> -->
+    <button [hidden]='matchBet.betState !== 0' mat-raised-button color="primary" (click)='bet()'>BET</button>
+    <button [hidden]='matchBet.betState === 0' mat-raised-button (click)="onStats()" color="basic">STATS</button>
   </mat-card-actions>
 </mat-card>

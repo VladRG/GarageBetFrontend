@@ -84,6 +84,8 @@ button:focus {
   color: #5798C6 !important;
 }
 
-.row {
-  width: 100%;
+.flex-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }

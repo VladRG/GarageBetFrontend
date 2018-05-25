@@ -35,4 +35,17 @@ export class MatchService extends BaseService<MatchModel> {
         return 'match-card-lost';
     }
   }
+
+  checkBet(betState: BetState) {
+    switch (betState) {
+      case BetState.Won:
+        return 'match-card-won';
+      case BetState.Result:
+        return 'match-card-result';
+      case BetState.Lost:
+        return 'match-card-lost';
+      default:
+        return 'match-card-not-available';
+    }
+  }
 }
