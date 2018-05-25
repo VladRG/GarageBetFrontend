@@ -1,11 +1,11 @@
 <form #betForm="ngForm" *ngIf="match">
   <mat-form-field>
-    <mat-select name="homeScore" [(ngModel)]="bet.homeScore" placeholder="{{match.homeTeam.name}}'s Goals">
+    <mat-select name="homeScore" [(ngModel)]="bet.homeScore" placeholder="{{match.homeTeamName}}'s Goals">
       <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
     </mat-select>
   </mat-form-field>
   <mat-form-field>
-    <mat-select name="awayScore" [(ngModel)]="bet.awayScore" placeholder="{{match.awayTeam.name}}'s Goals">
+    <mat-select name="awayScore" [(ngModel)]="bet.awayScore" placeholder="{{match.awayTeamName}}'s Goals">
       <mat-option *ngFor="let score of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]" [value]='score'>{{score}}</mat-option>
     </mat-select>
   </mat-form-field>

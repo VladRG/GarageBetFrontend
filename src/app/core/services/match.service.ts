@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
-import { MatchModel, MatchBetModel, MatchStats, BetState } from '@app/models';
+import { MatchModel, MatchBetModel, MatchStats, BetState, MatchBetForm } from '@app/models';
 import { Observable } from 'rxjs';
 
 @Injectable()
@@ -19,8 +19,20 @@ export class MatchService extends BaseService<MatchModel> {
     return this.httpClient.get<Array<MatchStats>>(`match/stats/${id}`);
   }
 
+  findMatchForBet(betId: number): Observable<MatchModel> {
+    return this.httpClient.get<MatchModel>(`match/bet/${betId}`);
+  }
+
+  getModelForNewBet(id: number): Observable<MatchBetForm> {
+    return this.httpClient.get<MatchBetForm>(`match/new-bet/${id}`);
+  }
+
+  getModelForEditBet(id: number): Observable<MatchBetForm> {
+    return this.httpClient.get<MatchBetForm>(`match/edit-bet/${id}`);
+  }
+
   checkBetState(matchBet: MatchBetModel): string {
-    if (matchBet.betState === BetState.CanBet || matchBet.match.homeScore < 0) {
+    if (matchBet.betState === BetState.CanBet || matchBet.homeScore < 0) {
       return 'match-card-can-bet';
     }
 

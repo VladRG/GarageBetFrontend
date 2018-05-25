@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BetService, MatchService } from '@app/core';
-import { MatchModel, BetModel } from '@app/models';
+import { MatchModel, BetModel, MatchBetForm } from '@app/models';
 
 @Component({
   selector: 'app-new',
@@ -17,16 +17,15 @@ export class NewBetComponent {
     private matchService: MatchService
   ) {
     this.route.params.subscribe((params) => {
-      this.matchService.find(params.matchId).subscribe((response: MatchModel) => {
+      this.matchService.getModelForNewBet(params.matchId).subscribe((response: MatchBetForm) => {
         this.match = response;
       });
     });
   }
 
-  match: MatchModel;
+  match: MatchBetForm;
 
   save(bet: BetModel) {
-    bet.matchId = this.match.id;
     this.service.add(bet).subscribe(response => this.router.navigateByUrl('match'));
   }
 

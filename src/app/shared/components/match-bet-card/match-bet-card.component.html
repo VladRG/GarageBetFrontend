@@ -1,26 +1,25 @@
 <mat-card [ngClass]='service.checkBetState(matchBet)'>
   <mat-card-content class="text-left">
     <div>
-      <h5>{{matchBet.match.homeTeam.name}} - {{matchBet.match.awayTeam.name}}</h5>
+      <h5>{{matchBet.homeTeamName}} - {{matchBet.awayTeamName}}
+        <b *ngIf="isMatchEnded()">{{matchBet.homeScore}} - {{matchBet.awayScore}}</b>
+      </h5>
     </div>
-    <div *ngIf="matchBet.match.homeScore > -1 && matchBet.match.awayScore > -1">
-      Match Score:
-      <b>{{matchBet.match.homeScore}} - {{matchBet.match.awayScore}}</b>
-    </div>
-    <div *ngIf='matchBet.betState !== 0 && matchBet.betState !== 4'>
+    <div *ngIf='hasBet()'>
       Bet:
-      <b>{{matchBet.bet.homeScore}} - {{matchBet.bet.awayScore}}</b>
+      <b>{{matchBet.homeBet}} - {{matchBet.awayBet}}</b>
     </div>
-    <div *ngIf='matchBet.betState === 4'>
+    <div *ngIf='notAvailable()'>
       You have not set a bet for this match
     </div>
-    <div>{{matchBet.match.dateTime | date}} at {{matchBet.match.dateTime | dateToTimeString}}</div>
+    <div>{{matchBet.dateTime | date}} at {{matchBet.dateTime | dateToTimeString}}</div>
     <div>Competition:
-      <b>{{matchBet.championship.name}}</b>
+      <b>{{matchBet.championshipName}}, {{matchBet.competitiveyear}}</b>
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button [hidden]='matchBet.betState !== 0' mat-raised-button color="primary" (click)='bet()'>BET</button>
-    <button [hidden]='matchBet.betState === 0' mat-raised-button (click)="onStats()" color="basic">STATS</button>
+    <button *ngIf='canBet()' mat-raised-button color="primary" (click)='bet()'>BET</button>
+    <button *ngIf='canEditBet()' mat-raised-button color="primary" (click)='bet()'>EDIT</button>
+    <button *ngIf='canSeeStats()' mat-raised-button (click)="onStats()" color="basic">STATS</button>
   </mat-card-actions>
 </mat-card>

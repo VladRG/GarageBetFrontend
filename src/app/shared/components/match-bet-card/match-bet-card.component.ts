@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatchBetModel, BetState, Match } from '@app/models';
+import { BetState, Match } from '@app/models';
 import { Router } from '@angular/router';
 import { MatchService } from '@app/core';
+import { MatchBetModel } from '@app/models';
 
 @Component({
   selector: 'app-match-bet-card',
@@ -16,13 +17,13 @@ export class MatchBetCardComponent implements OnInit {
   constructor(private router: Router, public service: MatchService) { }
 
   bet() {
-    this.router.navigateByUrl(`bet/match/${this.matchBet.match.id}`);
+    this.router.navigateByUrl(`bet/match/${this.matchBet.matchId}`);
   }
 
   ngOnInit() { }
 
   onStats() {
-    this.router.navigateByUrl(`match/stats/${this.matchBet.match.id}`);
+    this.router.navigateByUrl(`match/stats/${this.matchBet.matchId}`);
   }
 
   onEdit() {
@@ -30,6 +31,30 @@ export class MatchBetCardComponent implements OnInit {
   }
 
   end() {
-    this.router.navigateByUrl(`match/end/${this.matchBet.match.id}`);
+    this.router.navigateByUrl(`match/end/${this.matchBet.matchId}`);
+  }
+
+  isMatchEnded(): boolean {
+    return this.matchBet.homeScore > -1 && this.matchBet.awayScore > -1
+  }
+
+  notAvailable(): boolean {
+    return this.matchBet.betState === BetState.NotAvailable;
+  }
+
+  canBet(): boolean {
+    return this.matchBet.betState === BetState.CanBet && this.matchBet.betId === 0;
+  }
+
+  canEditBet(): boolean {
+    return this.matchBet.betState === BetState.CanBet && this.matchBet.betId !== 0;
+  }
+
+  canSeeStats(): boolean {
+    return this.matchBet.betState !== 0;
+  }
+
+  hasBet(): boolean {
+    return this.matchBet.betState !== 0 && this.matchBet.betState !== 4
   }
 }

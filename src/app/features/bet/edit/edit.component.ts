@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BetModel } from '@app/models';
-import { BetService } from '@app/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BetModel, MatchModel, MatchBetForm } from '@app/models';
+import { BetService, MatchService } from '@app/core';
 
 @Component({
   selector: 'app-edit-bet',
@@ -10,24 +10,28 @@ import { BetService } from '@app/core';
 })
 export class EditBetComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private service: BetService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private service: BetService,
+    private matchService: MatchService) {
+
     this.route.params.subscribe((params) => {
       const betId = parseInt(params.id, 10);
-      this.service.find(betId).subscribe((response: BetModel) => {
-        this.bet = response;
+      this.matchService.getModelForEditBet(betId).subscribe((response: MatchBetForm) => {
+        this.match = response;
       });
     });
   }
 
-  bet: BetModel;
+  match: MatchBetForm;
   ngOnInit() { }
 
   save(bet: BetModel) {
-
+    this.service.update(bet).subscribe(response => this.router.navigateByUrl('match'));
   }
 
   cancel() {
-
+    this.router.navigateByUrl('match');
   }
-
 }
