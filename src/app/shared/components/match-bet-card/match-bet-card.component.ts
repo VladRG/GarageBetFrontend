@@ -26,8 +26,8 @@ export class MatchBetCardComponent implements OnInit {
     this.router.navigateByUrl(`match/stats/${this.matchBet.matchId}`);
   }
 
-  onEdit() {
-
+  edit() {
+    this.router.navigateByUrl(`bet/edit/${this.matchBet.betId}`);
   }
 
   end() {
@@ -55,6 +55,6 @@ export class MatchBetCardComponent implements OnInit {
   }
 
   hasBet(): boolean {
-    return this.matchBet.betState !== 0 && this.matchBet.betState !== 4
+    return this.matchBet.homeBet > -1 && this.matchBet.awayBet > -1;
   }
 }

@@ -26,6 +26,7 @@ export class NewBetComponent {
   match: MatchBetForm;
 
   save(bet: BetModel) {
+    bet.matchId = this.match.matchId;
     this.service.add(bet).subscribe(response => this.router.navigateByUrl('match'));
   }
 

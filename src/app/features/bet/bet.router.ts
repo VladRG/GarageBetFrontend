@@ -14,7 +14,7 @@ const routes: Routes = [
     component: NewBetComponent,
   },
   {
-    path: 'bet/:id',
+    path: 'bet/edit/:id',
     component: EditBetComponent
   }
 ];

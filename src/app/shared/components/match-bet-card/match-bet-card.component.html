@@ -19,7 +19,7 @@
   </mat-card-content>
   <mat-card-actions>
     <button *ngIf='canBet()' mat-raised-button color="primary" (click)='bet()'>BET</button>
-    <button *ngIf='canEditBet()' mat-raised-button color="primary" (click)='bet()'>EDIT</button>
+    <button *ngIf='canEditBet()' mat-raised-button color="primary" (click)='edit()'>EDIT</button>
     <button *ngIf='canSeeStats()' mat-raised-button (click)="onStats()" color="basic">STATS</button>
   </mat-card-actions>
 </mat-card>

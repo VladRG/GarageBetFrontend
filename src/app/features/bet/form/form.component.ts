@@ -35,6 +35,7 @@ export class BetFormComponent implements OnInit {
     if (this.match.betId) {
       this.bet.homeScore = this.match.homeBet;
       this.bet.awayScore = this.match.awayBet;
+      this.bet.matchId = this.match.matchId;
       this.bet.id = this.match.betId;
     }
   }
