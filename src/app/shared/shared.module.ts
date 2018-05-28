@@ -10,7 +10,7 @@ import {
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DateToTimeStringPipe } from './pipes';
+import { DateToTimeStringPipe, StandingGroupPipe, ChampionshipGroupPipe } from './pipes';
 import { MatchBetCardComponent } from './components';
 import { AppRegisterDialog } from './components/register/register.component';
 import { AppLoginDialog } from './components/login/login.component';
@@ -23,7 +23,9 @@ import { AppLoginDialog } from './components/login/login.component';
     AppRegisterDialog,
 
     // Pipes
-    DateToTimeStringPipe
+    DateToTimeStringPipe,
+    StandingGroupPipe,
+    ChampionshipGroupPipe
   ],
   imports: [
     HttpClientModule,
@@ -68,7 +70,9 @@ import { AppLoginDialog } from './components/login/login.component';
     CommonModule,
 
     // Pipes
-    DateToTimeStringPipe
+    DateToTimeStringPipe,
+    StandingGroupPipe,
+    ChampionshipGroupPipe
   ],
   entryComponents: []
 })

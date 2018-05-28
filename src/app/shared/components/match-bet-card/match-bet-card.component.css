@@ -1,3 +1,17 @@
 :host {
   margin-top: 12px;
 }
+
+.mat-card {
+  padding: 8px 16px;
+  height: 156px;
+}
+
+.mat-card-content {
+  margin-bottom: 4px;
+}
+
+.button-row {
+  padding-top: 8px;
+  margin-left: -4px;
+}

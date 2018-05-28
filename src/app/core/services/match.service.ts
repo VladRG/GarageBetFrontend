@@ -3,6 +3,8 @@ import { BaseService } from './base.service';
 import { HttpClient } from '@angular/common/http';
 import { MatchModel, MatchBetModel, MatchStats, BetState, MatchBetForm } from '@app/models';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { getLocalDateTimeFromUtc } from '@app/utils';
 
 @Injectable()
 export class MatchService extends BaseService<MatchModel> {
@@ -12,7 +14,19 @@ export class MatchService extends BaseService<MatchModel> {
   }
 
   getMatchBets(): Observable<Array<MatchBetModel>> {
-    return this.httpClient.get<Array<MatchBetModel>>(`${this.baseUrl}`);
+    return this.httpClient.get<Array<MatchBetModel>>(`${this.baseUrl}`).pipe(
+      map(this.mapDates)
+    );
+  }
+
+  getMatchBetsForChampionship(championshipId: number): Observable<Array<MatchBetModel>> {
+    return this.httpClient.get<Array<MatchBetModel>>(`${this.baseUrl}/championship/${championshipId}`)
+      .pipe(map(this.mapDates));
+  }
+
+  getTodaysMatches(): Observable<Array<MatchBetModel>> {
+    return this.httpClient.get<Array<MatchBetModel>>(`${this.baseUrl}/today`)
+      .pipe(map(this.mapDates));
   }
 
   getStats(id: number): Observable<Array<MatchStats>> {
@@ -59,5 +73,13 @@ export class MatchService extends BaseService<MatchModel> {
       default:
         return 'match-card-not-available';
     }
+  }
+
+  private mapDates(models: Array<MatchBetModel>): Array<MatchBetModel> {
+    models.forEach(element => {
+      element.dateTime = new Date(element.dateTime);
+      element.dateTime = getLocalDateTimeFromUtc(element.dateTime);
+    });
+    return models;
   }
 }

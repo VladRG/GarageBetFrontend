@@ -39,7 +39,7 @@ export class AppAuthService {
   }
 
   isAdmin() {
-    return this.user.email === this.ADMINUSER;
+    return this.user.email.toLowerCase() === this.ADMINUSER;
   }
 
   logout() {

@@ -21,6 +21,17 @@ const routes: Routes = [
   {
     path: 'match/stats/:id',
     component: MatchStatsComponent
+  },
+  {
+    path: 'match/today',
+    component: ListMatchesComponent,
+    data: {
+      today: true
+    }
+  },
+  {
+    path: 'match/:championshipId',
+    component: ListMatchesComponent
   }
 ];
 

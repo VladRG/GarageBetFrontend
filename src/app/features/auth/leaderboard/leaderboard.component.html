@@ -1,31 +1,33 @@
-<div class="row">
-  <div class="col-xs-12 col-md-8 offset-md-2">
-    <div class="primary-color">
-      <h2>Leaderboard</h2>
+<app-loading-spinner [isLoading]='isLoading' message='Loading...'>
+  <div class="row">
+    <div class="col-xs-12 col-md-8 offset-md-2">
+      <div class="primary-color">
+        <h2>Leaderboard</h2>
+      </div>
+      <table class="table">
+        <thead>
+          <th> # </th>
+          <th> Name </th>
+          <th> Won </th>
+          <th> Result </th>
+          <th> Lost </th>
+          <th> Points </th>
+          <th> Bet # </th>
+          <th> (%) </th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let stat of stats; let index = index" [ngClass]="{'highlight-row': stat.user.email == userEmail}">
+            <td>{{index + 1}}</td>
+            <td>{{stat.user.firstName}} {{stat.user.lastName}}</td>
+            <td>{{stat.won}}</td>
+            <td>{{stat.result}}</td>
+            <td>{{stat.lost}}</td>
+            <td>{{stat.won * 3 + stat.result}}</td>
+            <td>{{stat.won + stat.result + stat.lost}}</td>
+            <td>{{getPercentage(stat) | number:'1.1-2'}}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <table class="table">
-      <thead>
-        <th> # </th>
-        <th> Name </th>
-        <th> Won </th>
-        <th> Result </th>
-        <th> Lost </th>
-        <th> Points </th>
-        <th> Bet # </th>
-        <th> (%) </th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let stat of stats; let index = index" [ngClass]="{'highlight-row': stat.user.email == userEmail}">
-          <td>{{index + 1}}</td>
-          <td>{{stat.user.firstName}} {{stat.user.lastName}}</td>
-          <td>{{stat.won}}</td>
-          <td>{{stat.result}}</td>
-          <td>{{stat.lost}}</td>
-          <td>{{stat.won * 3 + stat.result}}</td>
-          <td>{{stat.won + stat.result + stat.lost}}</td>
-          <td>{{getPercentage(stat) | number:'1.1-2'}}</td>
-        </tr>
-      </tbody>
-    </table>
   </div>
-</div>
+</app-loading-spinner>

@@ -1,19 +1,16 @@
 <mat-toolbar *ngIf="layout.screenType !== 'phone'">
   <div class="logo">
-    <img src="assets/logo.png">
+    <!-- <img src="assets/logo.png"> -->
   </div>
 
   <ul class="app-navbar">
-    <li routerLink='bet' routerLinkActive="active">
-      Bet
+    <li routerLink='match/today' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      Today's Matches
     </li>
     <li routerLink='championship' routerLinkActive="active">
       Championships
     </li>
-    <li routerLink='team' routerLinkActive="active">
-      Teams
-    </li>
-    <li routerLink='match' routerLinkActive="active">
+    <li routerLink='match' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       Matches
     </li>
     <li routerLink='leaderboard' routerLinkActive="active">

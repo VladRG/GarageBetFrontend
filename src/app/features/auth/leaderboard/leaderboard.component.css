@@ -1,9 +1,9 @@
 th,
 td {
-  color: #5798C6;
+  color: white;
   text-align: center;
 }
 
 .highlight-row {
-  background-color: rgba(10, 45, 71, 0.8);
+  background-color: rgba(28, 51, 52, 0.8);
 }

@@ -35,7 +35,7 @@ export class MatchBetCardComponent implements OnInit {
   }
 
   isMatchEnded(): boolean {
-    return this.matchBet.homeScore > -1 && this.matchBet.awayScore > -1
+    return this.matchBet.homeScore > -1 && this.matchBet.awayScore > -1;
   }
 
   notAvailable(): boolean {

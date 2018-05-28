@@ -1,7 +1,7 @@
 :host {
   height: 80px;
   align-items: none;
-  background-color: rgba(10, 45, 71, 0.7);
+  background-color: transparent;
 }
 
 .mat-toolbar {
@@ -34,12 +34,12 @@
   font-weight: 500;
   cursor: pointer;
   min-width: 80px !important;
-  color: #3087C6;
+  color: white;
 }
 
 .app-navbar>li:hover,
 .active {
-  border-bottom: 3px solid #C67600;
+  border-bottom: 3px solid darkorange;
 }
 
 .app-navbar>li:focus {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HasLoadingSpinnerBase } from '@app/shared';
-import { ChampionshipService } from '@app/core';
+import { ChampionshipService, AppAuthService } from '@app/core';
 import { ChampionshipModel } from '@app/models';
 import { Observable } from 'rxjs';
 import { MatTableDataSource, MatDialog } from '@angular/material';
@@ -19,7 +19,8 @@ export class ChampionshipListComponent extends HasLoadingSpinnerBase implements 
 
   constructor(
     private service: ChampionshipService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    public authService: AppAuthService
   ) {
     super();
   }

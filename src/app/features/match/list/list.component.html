@@ -1,18 +1,28 @@
 <app-loading-spinner [isLoading]='isLoading' message="Loading...">
-  <div class="row">
-    <div class="col-xl-8 offset-xl-2 col-md-12">
-      <div class="button-row">
-        <button mat-raised-button>
-          STATS
-        </button>
-      </div>
-      <div class="row">
-        <ng-container *ngFor="let matchBet of matchBets">
-          <app-match-bet-card [matchBet]="matchBet" (edit)="edit($event)" class="col-md-6 col-xs-12">
+  <ng-container *ngIf='matchBets.length > 0'>
+    <div class="row" *ngFor='let matchBetChampionshipGroup of matchBets | championshipGroup'>
+      <div class="col-xl-8 offset-xl-2 col-md-12">
+        <h3 class="primary-color">{{matchBetChampionshipGroup.groupName}}</h3>
+        <div class="row" *ngFor="let matchBetGroup of matchBetChampionshipGroup.group | standingGroup">
+          <div class="col">
+            <h5 class="primary-color">{{matchBetGroup.groupName}}</h5>
+            <div class="row">
+              <ng-container *ngFor='let match of matchBetGroup.group'>
+                <app-match-bet-card [matchBet]="match" (edit)="edit($event)" class="col-md-6 col-xs-12">
 
-          </app-match-bet-card>
-        </ng-container>
+                </app-match-bet-card>
+              </ng-container>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+  </ng-container>
+  <div *ngIf='matchBets.length === 0' class="row">
+    <mat-card class="col-md-6 offset-md-3 col-xs-12">
+      <mat-card-subtitle>
+        There are no matches to display
+      </mat-card-subtitle>
+    </mat-card>
   </div>
 </app-loading-spinner>

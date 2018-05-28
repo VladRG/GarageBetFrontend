@@ -1,4 +1,4 @@
-import { BaseEntity } from "@app/models/BaseEntity";
+import { BaseEntity } from '@app/models/BaseEntity';
 
 export class Match extends BaseEntity {
   homeTeamId: number;

@@ -12,14 +12,13 @@
     <div *ngIf='notAvailable()'>
       You have not set a bet for this match
     </div>
-    <div>{{matchBet.dateTime | date}} at {{matchBet.dateTime | dateToTimeString}}</div>
-    <div>Competition:
-      <b>{{matchBet.championshipName}}, {{matchBet.competitiveyear}}</b>
+    <div>
+      <b>{{matchBet.standing}}, </b>{{matchBet.championshipName}}
+      <br/> {{matchBet.dateTime | date}} at {{matchBet.dateTime | dateToTimeString}}</div>
+    <div class="button-row">
+      <button *ngIf='canBet()' mat-raised-button color="primary" (click)='bet()'>BET</button>
+      <button *ngIf='canEditBet()' mat-raised-button color="primary" (click)='edit()'>EDIT</button>
+      <button *ngIf='canSeeStats()' mat-raised-button (click)="onStats()" color="basic">STATS</button>
     </div>
   </mat-card-content>
-  <mat-card-actions>
-    <button *ngIf='canBet()' mat-raised-button color="primary" (click)='bet()'>BET</button>
-    <button *ngIf='canEditBet()' mat-raised-button color="primary" (click)='edit()'>EDIT</button>
-    <button *ngIf='canSeeStats()' mat-raised-button (click)="onStats()" color="basic">STATS</button>
-  </mat-card-actions>
 </mat-card>

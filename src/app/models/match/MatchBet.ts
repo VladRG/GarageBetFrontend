@@ -1,4 +1,4 @@
-import { BetState } from "@app/models/bet";
+import { BetState } from '@app/models/bet';
 
 export class MatchBetModel {
   matchId: number;
@@ -12,6 +12,7 @@ export class MatchBetModel {
   competitiveYear: string;
   homeTeamName: string;
   awayTeamName: string;
-  dateTime: Date
+  standing: string;
+  dateTime: Date;
   betState: BetState;
 }

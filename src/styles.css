@@ -10,6 +10,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  /* background-color: #2F4454 !important; */
 }
 
 .mat-form-field {
@@ -38,7 +39,8 @@ button:focus {
 }
 
 .mat-card {
-  background-color: rgba(255, 255, 255, 0.7);
+  background-color: rgba(255, 255, 255, 0.8);
+  color: black;
 }
 
 .mat-fab.mat-primary,
@@ -57,7 +59,7 @@ button:focus {
 }
 
 .match-card-won {
-  border-left: 4px solid green;
+  border-left: 6px solid green;
 }
 
 .won-color {
@@ -65,7 +67,7 @@ button:focus {
 }
 
 .match-card-result {
-  border-left: 4px solid yellow;
+  border-left: 6px solid yellow;
 }
 
 .result-color {
@@ -73,19 +75,21 @@ button:focus {
 }
 
 .match-card-lost {
-  border-left: 4px solid red;
+  border-left: 6px solid red;
 }
 
 .lost-color {
   color: red !important;
 }
 
-.primary-color {
-  color: #5798C6 !important;
-}
-
 .flex-row {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+}
+
+/* Color Scheme */
+
+.primary-color {
+  color: white;
 }
