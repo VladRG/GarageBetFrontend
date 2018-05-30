@@ -10,6 +10,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
   /* background-color: #2F4454 !important; */
 }
 
