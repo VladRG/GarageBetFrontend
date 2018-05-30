@@ -4,17 +4,23 @@
   </div>
 
   <ul class="app-navbar">
-    <li routerLink='match/today' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <li routerLink='' routerLinkActive="active" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+      Home
+    </li>
+    <li *ngIf='service.isLoggedIn()' routerLink='match/today' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       Today's Matches
     </li>
-    <li routerLink='championship' routerLinkActive="active">
+    <li *ngIf='service.isLoggedIn()' routerLink='championship' routerLinkActive="active">
       Championships
     </li>
-    <li routerLink='match' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+    <li *ngIf='service.isLoggedIn()' routerLink='match' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
       Matches
     </li>
-    <li routerLink='leaderboard' routerLinkActive="active">
+    <li *ngIf='service.isLoggedIn()' routerLink='leaderboard' routerLinkActive="active">
       Leaderboard
+    </li>
+    <li routerLink='how-it-works' routerLinkActive="active">
+      How it Works
     </li>
   </ul>
 
@@ -42,21 +48,44 @@
     <img src="assets/logo.png">
   </div>
   <div>
-    <button mat-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_horiz</mat-icon>
+    <button mat-button [matMenuTriggerFor]="menu" class="primary-color">
+      <mat-icon>menu</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item routerLink='bet' routerLinkActive="active">
-        Bet
+      <button mat-menu-item routerLink='' routerLinkActive="active" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        <mat-icon>home</mat-icon>
+        <span>Home</span>
       </button>
-      <button mat-menu-item routerLink='championship' routerLinkActive="active">
+      <button mat-menu-item *ngIf='service.isLoggedIn()' routerLink='match/today' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+        Today's Matches
+      </button>
+      <button mat-menu-item *ngIf='service.isLoggedIn()' routerLink='championship' routerLinkActive="active">
         Championships
       </button>
-      <button mat-menu-item routerLink='team' routerLinkActive="active">
-        Teams
-      </button>
-      <button mat-menu-item routerLink='match' routerLinkActive="active">
+      <button mat-menu-item *ngIf='service.isLoggedIn()' routerLink='match' routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
         Matches
+      </button>
+      <button mat-menu-item *ngIf='service.isLoggedIn()' routerLink='leaderboard' routerLinkActive="active">
+        <mat-icon>format_list_numbered</mat-icon>
+        <span>Leaderboard</span>
+      </button>
+      <button *ngIf='service.isLoggedIn()' mat-menu-item routerLink='stats' routerLinkActive="active">
+        <mat-icon>account_circle</mat-icon>
+        <span>My Stats</span>
+      </button>
+      <button mat-menu-item routerLink='how-it-works' routerLinkActive="active">
+        How it Works
+      </button>
+      <button mat-menu-item routerLink='login' routerLinkActive="active" *ngIf="!service.isLoggedIn()">
+        <mat-icon>account_circle</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item routerLink='register' routerLinkActive="active" *ngIf="!service.isLoggedIn()">
+        <mat-icon>how_to_reg</mat-icon>
+        <span>Register</span>
+      </button>
+      <button mat-menu-item *ngIf='service.isLoggedIn()' (click)="logout()">
+        Logout
       </button>
     </mat-menu>
   </div>

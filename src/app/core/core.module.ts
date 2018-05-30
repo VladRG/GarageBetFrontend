@@ -3,12 +3,14 @@ import { AppAuthGuard } from './guards';
 import { ApiUrlInterceptor, TokenInterceptor } from './interceptors';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ChampionshipService, TeamService, MatchService, AppLayoutService, AppAuthService, BetService } from './services';
+import { AppLoggedInGuard } from '@app/core/guards/logged-in.guard';
 
 @NgModule({
   declarations: [],
   providers: [
-    AppAuthService,
     AppAuthGuard,
+    AppLoggedInGuard,
+    AppAuthService,
     AppLayoutService,
     ChampionshipService,
     TeamService,

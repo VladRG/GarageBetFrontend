@@ -5,7 +5,12 @@
 }
 
 .stat-card {
-  min-width: 180px;
+  flex-basis: 30%;
+  margin: 12px;
+}
+
+.stat-card-phone {
+  flex-basis: 40%;
   margin: 12px;
 }
 

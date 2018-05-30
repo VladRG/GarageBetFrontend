@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BetService } from '@app/core';
+import { BetService, AppLayoutService } from '@app/core';
 import { UserStats } from '@app/models';
 
 @Component({
@@ -9,7 +9,7 @@ import { UserStats } from '@app/models';
 })
 export class StatsComponent implements OnInit {
 
-  constructor(private service: BetService) { }
+  constructor(private service: BetService, public layoutService: AppLayoutService) { }
 
 
   stats: UserStats;

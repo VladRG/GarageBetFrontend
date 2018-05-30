@@ -39,7 +39,7 @@ button:focus {
 }
 
 .mat-card {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
   color: black;
 }
 
@@ -92,4 +92,13 @@ button:focus {
 
 .primary-color {
   color: white;
+}
+
+a {
+  color: white !important;
+  text-decoration: underline !important;
+}
+
+a:hover {
+  color: lightgray !important;
 }

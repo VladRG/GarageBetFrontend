@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { TeamListComponent } from './list/list.component';
+import { AppLoggedInGuard } from '@app/core';
 
 const routes: Routes = [
   {
     path: 'team',
-    component: TeamListComponent
+    component: TeamListComponent,
+    canActivate: [AppLoggedInGuard]
   }
 ]
 

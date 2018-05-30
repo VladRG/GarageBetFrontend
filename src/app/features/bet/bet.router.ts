@@ -3,19 +3,23 @@ import { RouterModule, Routes } from '@angular/router';
 import { NewBetComponent } from './new/new.component';
 import { BetListComponent } from './list/list.component';
 import { EditBetComponent } from './edit/edit.component';
+import { AppLoggedInGuard } from '@app/core';
 
 const routes: Routes = [
   {
     path: 'bet',
-    component: BetListComponent
+    component: BetListComponent,
+    canActivate: [AppLoggedInGuard]
   },
   {
     path: 'bet/match/:matchId',
     component: NewBetComponent,
+    canActivate: [AppLoggedInGuard]
   },
   {
     path: 'bet/edit/:id',
-    component: EditBetComponent
+    component: EditBetComponent,
+    canActivate: [AppLoggedInGuard]
   }
 ];
 

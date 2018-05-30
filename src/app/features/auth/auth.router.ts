@@ -5,6 +5,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { StatsComponent } from './stats/stats.component';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
+import { AppLoggedInGuard } from '@app/core';
 
 const authRoutes: Routes = [
   {
@@ -17,11 +18,13 @@ const authRoutes: Routes = [
   },
   {
     path: 'stats',
-    component: StatsComponent
+    component: StatsComponent,
+    canActivate: [AppLoggedInGuard]
   },
   {
     path: 'leaderboard',
-    component: LeaderboardComponent
+    component: LeaderboardComponent,
+    canActivate: [AppLoggedInGuard]
   }
 ];
 
