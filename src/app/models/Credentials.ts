@@ -22,5 +22,6 @@ export class UserStats {
   won: number;
   result: number;
   lost: number;
+  count: number;
   user: UserModel;
 }

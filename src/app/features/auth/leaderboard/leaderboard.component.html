@@ -21,7 +21,7 @@
             <td>{{stat.user.firstName}} {{stat.user.lastName}}</td>
             <td>{{stat.won}}</td>
             <td>{{stat.result}}</td>
-            <td>{{stat.lost}}</td>
+            <td>{{stat.count - stat.won - stat.result}}</td>
             <td>{{stat.won * 3 + stat.result}}</td>
             <td>{{stat.won + stat.result + stat.lost}}</td>
             <td>{{getPercentage(stat) | number:'1.1-2'}}</td>

@@ -29,4 +29,8 @@ export class ChampionshipCardComponent {
   addMatch(championshipId: number) {
     this.router.navigateByUrl(`match/add/${championshipId}`);
   }
+
+  stats() {
+    this.router.navigateByUrl(`leaderboard?championshipId=${this.championship.id}`);
+  }
 }

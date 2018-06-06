@@ -20,7 +20,7 @@ export class BetService extends BaseService<BetModel> {
     return this.httpClient.get<UserStats>('stats');
   }
 
-  getLeaderboard(): Observable<Array<UserStats>> {
-    return this.httpClient.get<Array<UserStats>>('leaderboard');
+  getLeaderboard(championshipId?): Observable<Array<UserStats>> {
+    return this.httpClient.get<Array<UserStats>>(`leaderboard${championshipId ? '?championshipId=' + championshipId : ''}`);
   }
 }
