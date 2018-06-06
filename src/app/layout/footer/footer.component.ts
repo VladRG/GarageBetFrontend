@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-footer',
@@ -10,6 +11,10 @@ export class AppFooterComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+
   }
 
+  submit(paypalDonationForm) {
+    paypalDonationForm.submit();
+  }
 }

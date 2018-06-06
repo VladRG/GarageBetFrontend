@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppAboutComponent, AppNotFoundComponent, AppHomeComponent, HowItWorksComponent } from './static-pages';
+import { AppAboutComponent, AppNotFoundComponent, AppHomeComponent, HowItWorksComponent, TermsComponent } from './static-pages';
 import { AppSharedModule } from '@app/shared';
 
 const routes: Routes = [
@@ -17,6 +17,10 @@ const routes: Routes = [
     component: HowItWorksComponent
   },
   {
+    path: 'terms-and-conditions',
+    component: TermsComponent
+  },
+  {
     path: '**',
     component: AppNotFoundComponent
   }];
@@ -26,7 +30,8 @@ const routes: Routes = [
     AppAboutComponent,
     AppNotFoundComponent,
     AppHomeComponent,
-    HowItWorksComponent
+    HowItWorksComponent,
+    TermsComponent
   ],
   imports: [
     AppSharedModule,
