@@ -39,17 +39,18 @@ export class ListMatchesComponent extends HasLoadingSpinnerBase implements OnIni
     combineLatest(this.route.params, this.route.data)
       .subscribe(routeParams => {
         if (routeParams[0].championshipId) {
-          this.service.getMatchBetsForChampionship(parseInt(routeParams[0].championshipId, 10))
+          this.wrapObservableWithSpinner(
+            this.service.getMatchBetsForChampionship(parseInt(routeParams[0].championshipId, 10)))
             .subscribe(response => {
               this.matchBets = response;
             });
         } else if (routeParams[1].today) {
-          this.service.getTodaysMatches()
+          this.wrapObservableWithSpinner(this.service.getTodaysMatches())
             .subscribe(response => {
               this.matchBets = response;
             });
         } else {
-          this.service.getMatchBets().subscribe(response => {
+          this.wrapObservableWithSpinner(this.service.getMatchBets()).subscribe(response => {
             this.matchBets = response;
           });
         }

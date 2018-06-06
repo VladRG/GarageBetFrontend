@@ -3,15 +3,17 @@
 @import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
 body,
 html {
-  width: 100%;
   height: 100%;
+  width: 100%;
+}
+
+body {
   font-family: 'Open Sans', sans-serif;
   background-image: url('assets/background.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-  /* background-color: #2F4454 !important; */
 }
 
 .mat-form-field {

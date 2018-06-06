@@ -1,6 +1,5 @@
 <mat-toolbar *ngIf="layout.screenType !== 'phone'">
-  <div class="logo">
-    <!-- <img src="assets/logo.png"> -->
+  <div>
   </div>
 
   <ul class="app-navbar">
@@ -44,8 +43,8 @@
 </mat-toolbar>
 
 <mat-toolbar *ngIf="layout.screenType === 'phone'">
-  <div class="logo">
-    <img src="assets/logo.png">
+  <div>
+
   </div>
   <div>
     <button mat-button [matMenuTriggerFor]="menu" class="primary-color">

@@ -1,6 +1,7 @@
 :host {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -8,7 +9,17 @@
   right: 0;
 }
 
-.app-container {
+.container-fluid {
   flex-grow: 1;
-  overflow: auto;
+  padding: 8px 0 !important;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+  padding: 0 8px;
 }

@@ -1,9 +1,11 @@
 <mat-card>
   <mat-card-header>
-    <div class="avatar-card" mat-card-avatar [style.backgroundImage]="getImagePath()">
+    <div mat-card-avatar class="championship-card-image" [style.backgroundImage]="getImagePath()">
 
     </div>
-    <mat-card-title><h5>{{championship.name}}</h5></mat-card-title>
+    <mat-card-title>
+      <h5>{{championship.name}}</h5>
+    </mat-card-title>
     <mat-card-subtitle>{{championship.competitiveYear}}</mat-card-subtitle>
   </mat-card-header>
   <!--<img mat-card-image class="championship-card-image" [src]="'assets/championships/' + championship.name + '-large.png'">-->

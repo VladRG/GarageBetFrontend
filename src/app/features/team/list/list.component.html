@@ -1,22 +1,20 @@
 <app-loading-spinner [isLoading]='isLoading' message="Loading...">
-  <div class="row">
-    <div class="col-xl-8 offset-xl-2 col-md-12">
-      <div class="button-row">
-        <button mat-raised-button color="primary" (click)="create()">
-          CREATE
-        </button>
-        <button mat-raised-button>
-          STANDINGS
-        </button>
-      </div>
-      <br/>
-      <div class="row">
-        <ng-container *ngFor="let team of teams">
-          <app-team-card [team]="team" (edit)="edit($event)" class="col-md-6 col-lg-4 team-card">
+  <div class="col-xl-8 offset-xl-2 col-md-12">
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="create()">
+        CREATE
+      </button>
+      <button mat-raised-button>
+        STANDINGS
+      </button>
+    </div>
+    <br/>
+    <div class="row">
+      <ng-container *ngFor="let team of teams">
+        <app-team-card [team]="team" (edit)="edit($event)" class="col-md-6 col-lg-4 team-card">
 
-          </app-team-card>
-        </ng-container>
-      </div>
+        </app-team-card>
+      </ng-container>
     </div>
   </div>
 </app-loading-spinner>

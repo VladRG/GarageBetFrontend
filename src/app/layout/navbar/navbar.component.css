@@ -1,5 +1,5 @@
 :host {
-  height: 80px;
+  height: 60px;
   align-items: none;
   background-color: transparent;
 }
@@ -11,17 +11,9 @@
   display: flex;
 }
 
-.logo {
-  max-height: 80px;
-}
-
-.logo>img {
-  max-height: 80px;
-}
-
 .app-navbar {
   list-style: none;
-  margin-top: 46px;
+  margin-top: 26px;
   margin-bottom: 2px;
   height: 24px;
 }
@@ -29,7 +21,7 @@
 .app-navbar>li {
   display: inline;
   padding: 0 16px;
-  font-size: 18px;
+  font-size: 16px;
   text-align: center;
   font-weight: 500;
   cursor: pointer;
