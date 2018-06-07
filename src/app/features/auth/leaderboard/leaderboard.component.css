@@ -7,3 +7,8 @@ td {
 .highlight-row {
   background-color: rgba(28, 51, 52, 0.8);
 }
+
+.load-more-button {
+  width: 100%;
+  text-align: center;
+}

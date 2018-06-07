@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { BetService, AppAuthService } from '@app/core';
-import { UserStats } from '@app/models';
+import { UserStats, UserStatsResponse } from '@app/models';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ActivatedRoute } from '@angular/router';
 
@@ -19,17 +19,33 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
 
     this.route.queryParams.subscribe((params) => {
       this.userEmail = this.authService.getUser().email;
-      this.wrapObservableWithSpinner(this.service.getLeaderboard(params.championshipId)).subscribe((response: Array<UserStats>) => {
-        this.stats = response;
+      this.championshipId = params.championshipId;
+      this.wrapObservableWithSpinner(this.service.getLeaderboard(this.page, this.pageSize, params.championshipId)).subscribe((response: UserStatsResponse) => {
+        this.stats = response.stats;
+        this.count = response.count;
+        this.position = response.position;
       });
     });
   }
 
   stats: Array<UserStats> = [];
+  position = 0;
   userEmail = '';
+  pageSize = 5;
+  page = 0;
+  count = 0;
+  championshipId = 0;
 
   ngOnInit() {
 
+  }
+
+  loadMore() {
+    this.page++;
+    this.wrapObservableWithSpinner(this.service.getLeaderboard(this.page, this.pageSize, this.championshipId))
+      .subscribe((response: UserStatsResponse) => {
+        this.stats = this.stats.concat(response.stats);
+      });
   }
 
   getPercentage(stat: UserStats) {

@@ -25,3 +25,9 @@ export class UserStats {
   count: number;
   user: UserModel;
 }
+
+export class UserStatsResponse {
+  stats: Array<UserStats>;
+  count: number;
+  position: number;
+}

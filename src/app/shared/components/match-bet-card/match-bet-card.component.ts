@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { BetState, Match } from '@app/models';
 import { Router } from '@angular/router';
-import { MatchService } from '@app/core';
+import { MatchService, AppAuthService } from '@app/core';
 import { MatchBetModel } from '@app/models';
 
 @Component({
@@ -14,7 +14,7 @@ export class MatchBetCardComponent implements OnInit {
   @Input()
   matchBet: MatchBetModel;
 
-  constructor(private router: Router, public service: MatchService) { }
+  constructor(private router: Router, public service: MatchService, private authService: AppAuthService) { }
 
   bet() {
     this.router.navigateByUrl(`bet/match/${this.matchBet.matchId}`);
@@ -52,6 +52,10 @@ export class MatchBetCardComponent implements OnInit {
 
   canSeeStats(): boolean {
     return this.matchBet.betState !== 0;
+  }
+
+  canEnd() {
+    return this.authService.isAdmin();
   }
 
   hasBet(): boolean {
