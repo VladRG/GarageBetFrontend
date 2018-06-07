@@ -1,10 +1,10 @@
 <app-loading-spinner [isLoading]='isLoading' message="Registering...">
-  <mat-card class="col-xs-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
-    <mat-card-title>
-      Register
-    </mat-card-title>
-    <mat-card-content>
-      <form #registerForm='ngForm'>
+  <form #registerForm='ngForm' (ngSubmit)='register()'>
+    <mat-card class="col-xs-12 col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <mat-card-title>
+        Register
+      </mat-card-title>
+      <mat-card-content>
         <mat-form-field>
           <input required email matInput type="email" name="email" #email='ngModel' [(ngModel)]='user.email' placeholder='Email'>
           <mat-error *ngIf='email.invalid && email.errors.email'>
@@ -42,14 +42,6 @@
         <mat-error *ngIf="!checkPasswordMatch(password, confirmPassword)">
           Must match the password.
         </mat-error>
-        <div class="button-row">
-          <button mat-raised-button color="primary" (click)='register()'>
-            REGISTER
-          </button>
-          <button mat-raised-button color="warn" (click)='cancel()'>
-            CANCEL
-          </button>
-        </div>
         <br/>
         <div>
           Registering means accepting our
@@ -57,7 +49,15 @@
           For further information contact or to cancel your account, contact us at
           <a href="mailto:garagebet@gmail.com">garagebet@gmail.com</a>
         </div>
-      </form>
-    </mat-card-content>
-  </mat-card>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled]='registerForm.form.invalid' type="submit" (click)='register()'>
+          REGISTER
+        </button>
+        <button mat-raised-button color="warn" (click)='cancel()'>
+          CANCEL
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
 </app-loading-spinner>

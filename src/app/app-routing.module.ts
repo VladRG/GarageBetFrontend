@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AppAboutComponent, AppNotFoundComponent, AppHomeComponent, HowItWorksComponent, TermsComponent } from './static-pages';
+import { AppAboutComponent, AppNotFoundComponent, AppHomeComponent, HowItWorksComponent, TermsComponent } from './pages';
 import { AppSharedModule } from '@app/shared';
 
 const routes: Routes = [

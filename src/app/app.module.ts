@@ -1,11 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-
 import { AppComponent } from './app.component';
 import { AppSharedModule } from '@app/shared';
 import { AppRoutingModule } from '@app/app-routing.module';
-import { AppAboutComponent, AppNotFoundComponent } from '@app/static-pages';
 import { ChampionshipModule, TeamModule, MatchModule, AuthModule } from '@app/features';
 import { AppCoreModule } from '@app/core';
 import { AppLayoutModule } from '@app/layout';

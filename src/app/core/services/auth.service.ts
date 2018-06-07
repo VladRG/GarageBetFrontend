@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Credentials, RegisterModel, UserModel } from '../../models';
-import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import * as jwtDecode from 'jwt-decode';
 
 @Injectable()
 export class AppAuthService {
@@ -22,6 +22,45 @@ export class AppAuthService {
     return this.httpClient.post<UserModel>('login', credentials);
   }
 
+  checkLogin(): boolean {
+    const token = localStorage.getItem(this.TOKEN_KEY);
+    if (!token || this.isTokenExpired(token)) {
+      this.clearToken();
+      this.router.navigateByUrl('login', {
+        queryParams: {
+          backTo: this.router.url
+        }
+      });
+      return false;
+    }
+    return true;
+  }
+
+  getTokenExpirationDate(token: string): Date {
+    const decoded = jwtDecode(token);
+
+    if (decoded.exp === undefined) {
+      return null;
+    }
+    const date = new Date(0);
+    date.setUTCSeconds(decoded.exp);
+    return date;
+  }
+
+  isTokenExpired(token?: string): boolean {
+    if (!token) {
+      token = localStorage.getItem(this.TOKEN_KEY);
+    }
+    if (!token) {
+      return true;
+    }
+    const date = this.getTokenExpirationDate(token);
+    if (date === undefined) {
+      return false;
+    }
+    return !(date.valueOf() > new Date().valueOf());
+  }
+
   register(credentials: RegisterModel): Observable<any> {
     return this.httpClient.post('register', credentials);
   }
@@ -36,6 +75,10 @@ export class AppAuthService {
 
   isLoggedIn(): boolean {
     return !!this.getToken();
+  }
+
+  clearToken(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
   }
 
   isAdmin() {

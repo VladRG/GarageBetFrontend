@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
 import { AppAuthService } from '../services';
-import { tap } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { } from 'selenium-webdriver/http';
 import { UserModel } from '@app/models';
 
@@ -13,7 +13,8 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (this.service.isLoggedIn()) {
+
+    if (this.service.checkLogin()) {
       req = req.clone({
         setHeaders: {
           Authorization: `Bearer ${this.service.getToken()}`
@@ -30,11 +31,6 @@ export class TokenInterceptor implements HttpInterceptor {
             this.service.storeUser(event.body as UserModel);
           }
         }
-
-        if (event instanceof HttpRequest) {
-
-        }
-      })
-    );
+      }));
   }
 }

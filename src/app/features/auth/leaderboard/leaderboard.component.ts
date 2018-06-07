@@ -31,7 +31,7 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
   stats: Array<UserStats> = [];
   position = 0;
   userEmail = '';
-  pageSize = 5;
+  pageSize = 20;
   page = 0;
   count = 0;
   championshipId = 0;
