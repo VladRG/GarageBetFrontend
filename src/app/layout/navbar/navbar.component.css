@@ -9,6 +9,7 @@
   background: transparent;
   justify-content: space-between !important;
   display: flex;
+  padding: 0 8px;
 }
 
 .app-navbar {

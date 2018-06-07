@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { AppLayoutService } from '@app/core';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +9,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AppFooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(public layout: AppLayoutService) { }
 
   ngOnInit() {
 

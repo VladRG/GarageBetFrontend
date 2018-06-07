@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BetService, AppAuthService } from '@app/core';
+import { BetService, AppAuthService, AppLayoutService } from '@app/core';
 import { UserStats, UserStatsResponse } from '@app/models';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ActivatedRoute } from '@angular/router';
@@ -14,7 +14,8 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
   constructor(
     private service: BetService,
     private authService: AppAuthService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    public layoutService: AppLayoutService) {
     super();
 
     this.route.queryParams.subscribe((params) => {

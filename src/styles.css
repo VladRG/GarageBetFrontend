@@ -91,6 +91,11 @@ button:focus {
   justify-content: center;
 }
 
+.row {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
 /* Color Scheme */
 
 .primary-color {
@@ -104,4 +109,9 @@ a {
 
 a:hover {
   color: lightgray !important;
+}
+
+.no-horiz-padding{
+  padding-left: 0px !important;
+  padding-right: 0px !important;
 }

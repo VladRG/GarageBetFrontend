@@ -1,14 +1,14 @@
 <app-loading-spinner [isLoading]='isLoading' message="Loading...">
   <ng-container *ngIf='matchBets.length > 0'>
     <div class="row" *ngFor='let matchBetChampionshipGroup of matchBets | championshipGroup'>
-      <div class="col-xl-8 offset-xl-2 col-md-12">
+      <div class="col-xl-8 offset-xl-2 col-md-12 no-horiz-padding">
         <h3 class="primary-color">{{matchBetChampionshipGroup.groupName}}</h3>
         <div class="row" *ngFor="let matchBetGroup of matchBetChampionshipGroup.group | standingGroup">
-          <div class="col">
+          <div class="col no-horiz-padding">
             <h5 class="primary-color">{{matchBetGroup.groupName}}</h5>
             <div class="row">
               <ng-container *ngFor='let match of matchBetGroup.group'>
-                <app-match-bet-card [matchBet]="match" (edit)="edit($event)" class="col-md-6 col-xs-12">
+                <app-match-bet-card [matchBet]="match" (edit)="edit($event)" class="col-sm-6 col-xs-12 col-xl-4 no-horiz-padding">
 
                 </app-match-bet-card>
               </ng-container>
@@ -21,7 +21,7 @@
   <div *ngIf='matchBets.length === 0' class="row">
     <mat-card class="col-md-6 offset-md-3 col-xs-12">
       <mat-card-subtitle>
-        There are no matches to display
+        &nbsp;&nbsp; There are no matches to display
       </mat-card-subtitle>
     </mat-card>
   </div>

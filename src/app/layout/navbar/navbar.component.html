@@ -1,4 +1,4 @@
-<mat-toolbar *ngIf="layout.screenType !== 'phone'">
+<mat-toolbar *ngIf="layout.isDesktopMode()">
   <div>
   </div>
 
@@ -42,9 +42,9 @@
   </ul>
 </mat-toolbar>
 
-<mat-toolbar *ngIf="layout.screenType === 'phone'">
-  <div>
-
+<mat-toolbar *ngIf='layout.isPhoneMode() || layout.isTabletMode()'>
+  <div class="primary-color">
+    GarageBet.com
   </div>
   <div>
     <button mat-button [matMenuTriggerFor]="menu" class="primary-color">

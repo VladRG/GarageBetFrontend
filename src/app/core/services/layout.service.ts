@@ -12,7 +12,7 @@ export class AppLayoutService {
   setType(width: number) {
     if (width > 1200) {
       this.screenType = ScreenType.DESKTOP;
-    } else if (width > 768) {
+    } else if (width >= 736) {
       this.screenType = ScreenType.TABLET;
     } else {
       this.screenType = ScreenType.PHONE;
