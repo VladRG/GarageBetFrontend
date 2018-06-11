@@ -20,6 +20,11 @@ const routes: Routes = [
     path: 'leaderboard/add',
     component: AddLeaderboardComponent,
     canActivate: [AppLoggedInGuard]
+  },
+  {
+    path: 'leaderboard/{group}',
+    component: AddLeaderboardComponent,
+    canActivate: [AppLoggedInGuard]
   }
 ];
 

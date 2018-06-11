@@ -6,6 +6,7 @@ import { AppCoreModule } from '@app/core';
 import { LeaderboardRoutingModule } from './leaderboard.router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
 import { AddLeaderboardComponent } from './add/add.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { AddLeaderboardComponent } from './add/add.component';
     StatsComponent
   ],
   imports: [
+    ReactiveFormsModule,
     AppSharedModule,
     AppCoreModule,
     LeaderboardRoutingModule

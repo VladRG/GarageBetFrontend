@@ -1,15 +1,26 @@
-<div class="row">
-  <div class="col-xs-12 col-md-8 offset-md-2">
-    <div class="button-row">
-      <button mat-raised-button class="leaderboard-button" [ngClass]='{"leaderboard-selected": checkSelected(0)}'>
-        Overall
-      </button>
-      <button mat-raised-button class="leaderboard-add-button">
-        <mat-icon>add</mat-icon>
-      </button>
-    </div>
-    <div class="leaderboard-content">
-      <app-leaderboard *ngIf='!currentGroup'></app-leaderboard>
+<app-loading-spinner [isLoading]='isLoading' message="Loading...">
+  <div class="row">
+    <div class="col-xs-12 col-md-8 offset-md-2">
+      <div class="button-row">
+        <button mat-raised-button class="leaderboard-button" (click)='select(0)' [ngClass]='{"leaderboard-selected": checkSelected(0)}'>
+          Overall
+        </button>
+        <button mat-raised-button *ngFor='let leaderboard of leaderboards' class="leaderboard-button" (click)='select(leaderboard.id)'
+          [ngClass]='{"leaderboard-selected": checkSelected(leaderboard.id)}'>
+          {{leaderboard.name}}
+        </button>
+        <button mat-raised-button class="leaderboard-add-button" routerLink='add'>
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
+      <div class="leaderboard-content">
+        <app-leaderboard *ngIf='!currentGroup'></app-leaderboard>
+        <ng-container *ngFor='let leaderboard of leaderboards'>
+          <ng-container *ngIf='currentGroup === leaderboard.id'>
+            <app-leaderboard [group]='leaderboard.id' [owner]='leaderboard.owner.email' (leave)='onLeave($event)' (delete)='onDelete($event)'></app-leaderboard>
+          </ng-container>
+        </ng-container>
+      </div>
     </div>
   </div>
-</div>
+</app-loading-spinner>

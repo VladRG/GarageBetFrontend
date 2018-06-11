@@ -21,3 +21,8 @@ td {
   display: flex;
   justify-content: space-between;
 }
+
+.mat-raised-button {
+  min-width: 56px !important;
+  margin: 4px;
+}

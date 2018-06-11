@@ -1,7 +1,17 @@
 <app-loading-spinner [isLoading]='isLoading' message='Loading...'>
   <div class="primary-color leaderboard-header">
     <h5>Your ranking: {{position + 1}} out of {{count}} players</h5>
-    <a href="javascript:void(0)" color='warn'>Delete leaderboard</a>
+    <div>
+      <a href="javascript:void(0)" mat-raised-button color='warn' *ngIf='isOwner()' (click)='onDelete()'>
+        <mat-icon>delete</mat-icon>
+      </a>
+      <a href="javascript:void(0)" mat-raised-button (click)='onEdit()' *ngIf='isOwner()'>
+        <mat-icon>edit</mat-icon>
+      </a>
+      <a href="javascript:void(0)" mat-raised-button (click)='onLeave()' *ngIf='!isOwner()'>
+        Leave
+      </a>
+    </div>
   </div>
   <table class="table">
     <thead>

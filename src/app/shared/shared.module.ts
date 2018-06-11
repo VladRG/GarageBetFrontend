@@ -6,7 +6,7 @@ import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
   MatGridListModule, MatSelectModule, MatIconModule,
-  MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatMenuModule, MatTabsModule
+  MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatMenuModule, MatTabsModule, MatAutocompleteModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -44,6 +44,7 @@ import { AppLoginDialog } from './components/login/login.component';
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatAutocompleteModule,
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
@@ -65,6 +66,7 @@ import { AppLoginDialog } from './components/login/login.component';
     MatListModule,
     MatGridListModule,
     MatCardModule,
+    MatAutocompleteModule,
     MatSelectModule,
     MatNativeDateModule,
     MatDatepickerModule,
