@@ -45,4 +45,8 @@ export class LeaderboardsComponent extends HasLoadingSpinnerBase implements OnIn
         this.ngOnInit();
       });
   }
+
+  canAdd(): boolean {
+    return this.leaderboards.length < 3;
+  }
 }

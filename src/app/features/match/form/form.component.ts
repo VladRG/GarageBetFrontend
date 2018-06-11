@@ -42,7 +42,7 @@ export class MatchFormComponent extends HasLoadingSpinnerBase implements OnInit 
     this.wrapObservableWithSpinner(this.teamService.getForChampionship(this.championshipId))
       .subscribe((data: Array<Team>) => {
         this.teams = data;
-      }, error => console.error);
+      });
   }
 
   fetchTeams(): Observable<Array<Team>> {

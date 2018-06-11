@@ -9,7 +9,7 @@ import { AppLayoutService } from '@app/core';
 })
 export class AppLayoutComponent {
 
-  constructor(private service: AppLayoutService) { }
+  constructor(public service: AppLayoutService) { }
 
   @HostListener('window:resize', ['$event.target.innerWidth'])
   onResize(event: number) {

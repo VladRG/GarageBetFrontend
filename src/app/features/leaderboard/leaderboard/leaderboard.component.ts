@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { AppAuthService, AppLayoutService, LeaderboardService } from '@app/core';
-import { UserStats, UserStatsResponse } from '@app/models';
+import { UserStats, UserStatsResponse, UserModel } from '@app/models';
 import { HasLoadingSpinnerBase, ModalConfirmComponent } from '@app/shared';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
@@ -16,7 +16,7 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
   group: number;
 
   @Input()
-  owner: string;
+  owner: UserModel;
 
   @Output()
   delete: EventEmitter<number> = new EventEmitter();
@@ -42,6 +42,7 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
   championshipId = 0;
 
   ngOnInit() {
+    this.userEmail = this.authService.getUser().email;
     if (!this.group) {
       this.wrapObservableWithSpinner(
         this.service.getLeaderboard(this.page, this.pageSize))
@@ -59,7 +60,10 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
 
   isOwner(): boolean {
     const email = this.authService.getUser().email;
-    return email === this.owner;
+    if (this.owner) {
+      return email === this.owner.email;
+    }
+    return false;
   }
 
   updateData(response: UserStatsResponse) {
@@ -99,6 +103,6 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
       if (response) {
         this.leave.emit(this.group);
       }
-    })
+    });
   }
 }

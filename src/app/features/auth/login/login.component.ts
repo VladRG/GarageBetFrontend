@@ -31,7 +31,6 @@ export class LoginComponent extends HasLoadingSpinnerBase {
       .subscribe(response => {
         this.router.navigateByUrl('match');
       }, errorResponse => {
-        console.log(errorResponse);
         this.errorMessage = 'Invalid email or password.'
       });
   }

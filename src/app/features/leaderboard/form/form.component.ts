@@ -9,11 +9,11 @@ import { ModalConfirmComponent, HasLoadingSpinnerBase } from '@app/shared';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.css']
+  selector: 'app-leaderboard-form',
+  templateUrl: './form.component.html',
+  styleUrls: ['./form.component.css']
 })
-export class AddLeaderboardComponent extends HasLoadingSpinnerBase implements OnInit {
+export class LeaderboardFormComponent extends HasLoadingSpinnerBase implements OnInit {
 
   userCtrl: FormControl;
   filteredUsers: Observable<Array<UserModel>>;
@@ -51,7 +51,7 @@ export class AddLeaderboardComponent extends HasLoadingSpinnerBase implements On
           .subscribe((response: Array<UserModel>) => {
             this.users = response.slice();
             this.allUsers = response.slice();
-          })
+          });
       }
     });
 

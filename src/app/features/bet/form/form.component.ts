@@ -22,7 +22,6 @@ export class BetFormComponent implements OnInit {
   bet: BetModel;
 
   onSave() {
-    console.log(this.bet);
     this.save.emit(this.bet);
   }
 

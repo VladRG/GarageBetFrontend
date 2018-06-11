@@ -27,7 +27,7 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
       .subscribe((data: Array<Team>) => {
         this.teams = data;
       }, error => {
-        console.log(error);
+
       });
   }
 
@@ -62,8 +62,7 @@ export class TeamListComponent extends HasLoadingSpinnerBase implements OnInit {
       if (updatedTeam) {
         this.service.update(updatedTeam)
           .subscribe(
-            (response) => this.ngOnInit(),
-            error => console.log()
+            (response) => this.ngOnInit()
           );
       }
     });

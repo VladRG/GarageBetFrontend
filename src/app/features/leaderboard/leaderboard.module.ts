@@ -5,14 +5,14 @@ import { AppSharedModule } from '@app/shared';
 import { AppCoreModule } from '@app/core';
 import { LeaderboardRoutingModule } from './leaderboard.router';
 import { LeaderboardComponent } from './leaderboard/leaderboard.component';
-import { AddLeaderboardComponent } from './add/add.component';
+import { LeaderboardFormComponent } from './form/form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     LeaderboardsComponent,
     LeaderboardComponent,
-    AddLeaderboardComponent,
+    LeaderboardFormComponent,
     StatsComponent
   ],
   imports: [
