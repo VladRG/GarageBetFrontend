@@ -82,19 +82,19 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
 
   onDelete() {
     this.dialog.open(ModalConfirmComponent, {
-      width: '220px'
+      width: '320px'
     }).afterClosed().subscribe((response: boolean) => {
       this.delete.emit(this.group);
     });
   }
 
   onEdit() {
-    this.router.navigateByUrl(`leaderboard/${this.group}`);
+    this.router.navigateByUrl(`leaderboard/edit/${this.group}`);
   }
 
   onLeave() {
     this.dialog.open(ModalConfirmComponent, {
-      width: '220px'
+      width: '320px'
     }).afterClosed().subscribe((response: boolean) => {
       if (response) {
         this.leave.emit(this.group);

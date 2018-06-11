@@ -22,7 +22,7 @@ const routes: Routes = [
     canActivate: [AppLoggedInGuard]
   },
   {
-    path: 'leaderboard/{group}',
+    path: 'leaderboard/edit/:group',
     component: AddLeaderboardComponent,
     canActivate: [AppLoggedInGuard]
   }

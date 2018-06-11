@@ -19,6 +19,7 @@ export class LeaderboardsComponent extends HasLoadingSpinnerBase implements OnIn
   groups: Array<any> = [];
 
   ngOnInit() {
+    this.currentGroup = 0;
     this.wrapObservableWithSpinner(this.service.getLeaderboards()).subscribe((response: Array<LeaderboardSummary>) => {
       this.leaderboards = response;
     });

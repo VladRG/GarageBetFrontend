@@ -5,15 +5,15 @@ import { startWith, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { AppAuthService, LeaderboardService } from '@app/core';
 import { MatDialog, MatAutocompleteSelectedEvent } from '@angular/material';
-import { ModalConfirmComponent } from '@app/shared';
-import { ActivatedRoute } from '@angular/router';
+import { ModalConfirmComponent, HasLoadingSpinnerBase } from '@app/shared';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-add',
   templateUrl: './add.component.html',
   styleUrls: ['./add.component.css']
 })
-export class AddLeaderboardComponent implements OnInit {
+export class AddLeaderboardComponent extends HasLoadingSpinnerBase implements OnInit {
 
   userCtrl: FormControl;
   filteredUsers: Observable<Array<UserModel>>;
@@ -25,16 +25,36 @@ export class AddLeaderboardComponent implements OnInit {
     private userService: AppAuthService,
     private service: LeaderboardService,
     private route: ActivatedRoute,
+    private router: Router,
     private dialog: MatDialog) {
+
+    super();
     this.userCtrl = new FormControl();
     this.route.params.subscribe(params => {
       if (params.group) {
-        this.service.getLeaderboardForEdit(params.group)
-          .subscribe((response: Leaderboard) => {
-            this.leaderboard = response;
+        this.wrapObservableArrayWithSpinner([
+          this.userService.getUsers(),
+          this.service.getLeaderboardForEdit(params.group)
+        ]).subscribe((response: [Array<UserModel>, Leaderboard]) => {
+          this.allUsers = response[0].slice();
+          this.users = response[0].slice(0);
+          this.allUsers.forEach(user => {
+            const existingUser = this.leaderboard.users.filter(row => row.email === user.email)[0];
+            if (existingUser) {
+              this.users.splice(this.users.indexOf(user, 1));
+            }
+          });
+          this.leaderboard = response[1];
+        });
+      } else {
+        this.wrapObservableWithSpinner(this.userService.getUsers())
+          .subscribe((response: Array<UserModel>) => {
+            this.users = response.slice();
+            this.allUsers = response.slice();
           })
       }
-    })
+    });
+
     this.filteredUsers = this.userCtrl.valueChanges
       .pipe(
         startWith(''),
@@ -52,21 +72,22 @@ export class AddLeaderboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userService.getUsers().subscribe((response: Array<UserModel>) => {
-      this.users = response.slice();
-      this.allUsers = response.slice();
-    });
+
   }
 
-  addLeaderboard() {
+  save() {
     this.dialog.open(ModalConfirmComponent, {
-      width: '260px'
+      width: '320px'
     }).afterClosed().subscribe((response: boolean) => {
       if (response) {
         if (this.leaderboard.id && this.leaderboard.id > 0) {
-          this.service.update(this.leaderboard).subscribe();
+          this.service.update(this.leaderboard).subscribe(() => {
+            this.router.navigateByUrl('leaderboard');
+          });
         } else {
-          this.service.add(this.leaderboard).subscribe();
+          this.service.add(this.leaderboard).subscribe(() => {
+            this.router.navigateByUrl('leaderboard');
+          });
         }
       }
     });
