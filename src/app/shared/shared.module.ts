@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { LoadingSpinnerComponent } from './components';
+import { LoadingSpinnerComponent, ModalConfirmComponent } from './components';
 import {
   MatDialogModule, MatButtonModule, MatFormFieldModule,
   MatInputModule, MatTableModule, MatCardModule, MatListModule,
-  MatGridListModule, MatSelectModule, MatIconModule, MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatMenuModule
+  MatGridListModule, MatSelectModule, MatIconModule,
+  MatDatepickerModule, MatNativeDateModule, MatToolbarModule, MatMenuModule, MatTabsModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
@@ -21,6 +22,7 @@ import { AppLoginDialog } from './components/login/login.component';
     MatchBetCardComponent,
     AppLoginDialog,
     AppRegisterDialog,
+    ModalConfirmComponent,
 
     // Pipes
     DateToTimeStringPipe,
@@ -45,11 +47,13 @@ import { AppLoginDialog } from './components/login/login.component';
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
+    MatTabsModule,
     BrowserAnimationsModule
   ],
   exports: [
     LoadingSpinnerComponent,
     MatchBetCardComponent,
+    ModalConfirmComponent,
 
     RouterModule,
     FormsModule,
@@ -67,6 +71,7 @@ import { AppLoginDialog } from './components/login/login.component';
     MatIconModule,
     MatToolbarModule,
     MatMenuModule,
+    MatTabsModule,
     CommonModule,
 
     // Pipes
@@ -74,6 +79,6 @@ import { AppLoginDialog } from './components/login/login.component';
     StandingGroupPipe,
     ChampionshipGroupPipe
   ],
-  entryComponents: []
+  entryComponents: [ModalConfirmComponent]
 })
 export class AppSharedModule { }

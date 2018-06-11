@@ -16,3 +16,8 @@ td {
 td {
   padding: 4px;
 }
+
+.leaderboard-header {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { BetService, AppAuthService, AppLayoutService } from '@app/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { AppAuthService, AppLayoutService, LeaderboardService } from '@app/core';
 import { UserStats, UserStatsResponse } from '@app/models';
 import { HasLoadingSpinnerBase } from '@app/shared';
 import { ActivatedRoute } from '@angular/router';
@@ -11,22 +11,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnInit {
 
+  @Input()
+  group: number;
+
   constructor(
-    private service: BetService,
-    private authService: AppAuthService,
+    private service: LeaderboardService,
     private route: ActivatedRoute,
+    public authService: AppAuthService,
     public layoutService: AppLayoutService) {
     super();
-
-    this.route.queryParams.subscribe((params) => {
-      this.userEmail = this.authService.getUser().email;
-      this.championshipId = params.championshipId;
-      this.wrapObservableWithSpinner(this.service.getLeaderboard(this.page, this.pageSize, params.championshipId)).subscribe((response: UserStatsResponse) => {
-        this.stats = response.stats;
-        this.count = response.count;
-        this.position = response.position;
-      });
-    });
   }
 
   stats: Array<UserStats> = [];
@@ -38,7 +31,23 @@ export class LeaderboardComponent extends HasLoadingSpinnerBase implements OnIni
   championshipId = 0;
 
   ngOnInit() {
+    if (!this.group) {
+      this.wrapObservableWithSpinner(
+        this.service.getLeaderboard(this.page, this.pageSize))
+        .subscribe((response: UserStatsResponse) => {
+          this.updateData(response);
+        });
+    } else {
+      this.wrapObservableWithSpinner(
+        this.service.getLeaderboardForGroup(this.page, this.pageSize, this.group)
+      ).subscribe(this.updateData);
+    }
+  }
 
+  updateData(response: UserStatsResponse) {
+    this.stats = response.stats;
+    this.count = response.count;
+    this.position = response.position;
   }
 
   loadMore() {

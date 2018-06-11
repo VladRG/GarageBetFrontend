@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-xs-12 col-md-8 offset-md-2">
+    <div class="button-row">
+      <button mat-raised-button class="leaderboard-button" [ngClass]='{"leaderboard-selected": checkSelected(0)}'>
+        Overall
+      </button>
+      <button mat-raised-button class="leaderboard-add-button">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+    <div class="leaderboard-content">
+      <app-leaderboard *ngIf='!currentGroup'></app-leaderboard>
+    </div>
+  </div>
+</div>

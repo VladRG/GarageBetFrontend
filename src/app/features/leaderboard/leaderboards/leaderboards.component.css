@@ -1,0 +1,21 @@
+.leaderboard-selected {
+  border-bottom: 4px solid orange;
+}
+
+.leaderboard-button {
+  padding: 4px 22px !important;
+  margin: 0px 8px;
+  background: transparent;
+  font-size: 18px;
+  min-width: 120px;
+}
+
+.leaderboard-add-button {
+  margin: 0;
+  padding: 4px 0px !important;
+  min-width: 52px;
+}
+
+.leaderboard-content {
+  margin-top: 12px;
+}

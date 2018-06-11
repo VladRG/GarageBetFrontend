@@ -7,6 +7,7 @@ import { ChampionshipModule, TeamModule, MatchModule, AuthModule } from '@app/fe
 import { AppCoreModule } from '@app/core';
 import { AppLayoutModule } from '@app/layout';
 import { BetModule } from '@app/features/bet/bet.module';
+import { LeaderboardModule } from '@app/features/leaderboard';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { BetModule } from '@app/features/bet/bet.module';
     MatchModule,
     BetModule,
     AuthModule,
+    LeaderboardModule,
 
     // Top Level modules
     AppCoreModule,

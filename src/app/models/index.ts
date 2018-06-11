@@ -4,3 +4,4 @@ export * from './BaseEntity';
 export * from './bet';
 export * from './match';
 export * from './team';
+export * from './leaderboard';

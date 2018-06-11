@@ -15,12 +15,4 @@ export class BetService extends BaseService<BetModel> {
   getAvailable(): Observable<Array<MatchBetModel>> {
     return this.httpClient.get<Array<MatchBetModel>>(`${this.baseUrl}`);
   }
-
-  getStats(): Observable<UserStats> {
-    return this.httpClient.get<UserStats>('stats');
-  }
-
-  getLeaderboard(page: number, pageSize: number, championshipId?: number): Observable<UserStatsResponse> {
-    return this.httpClient.get<UserStatsResponse>(`leaderboard?page=${page}&pageSize=${pageSize}${championshipId ? '&championshipId=' + championshipId : ''}`);
-  }
 }

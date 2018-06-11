@@ -15,8 +15,11 @@ export class AppAuthService {
   private TOKEN_KEY = 'access_token';
   private USER_KEY = 'user';
   private ADMINUSER = 'gheorghitavladnicolae@gmail.com';
-
   private user: UserModel;
+
+  getUsers(): Observable<Array<UserModel>> {
+    return this.httpClient.get<Array<UserModel>>('user');
+  }
 
   login(credentials: Credentials): Observable<UserModel> {
     return this.httpClient.post<UserModel>('login', credentials);

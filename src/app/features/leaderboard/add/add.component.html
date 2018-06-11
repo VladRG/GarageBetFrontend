@@ -1,0 +1,33 @@
+<div class="row">
+  <form #newLeaderboardForm='ngForm'>
+    <mat-card class="col-md-8 col-xs-12 offset-md-2">
+      <mat-card-title>Create Leaderboard</mat-card-title>
+      <mat-card-subtitle>Create a custom leaderboard in which you invite your friends</mat-card-subtitle>
+      <mat-card-content>
+
+        <mat-form-field>
+          <input required matInput placeholder="Leaderboard Name" [(ngModel)]='leaderboard.name' #name name='name' />
+          <mat-error>Required</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput placeholder="Users" [matAutocomplete]="users" [formControl]="userCtrl">
+          <mat-autocomplete #users="matAutocomplete">
+            <mat-option *ngFor="let user of filteredUsers | async" [value]="user.id">
+              <span>{{ user.firstName }} {{user.lastName}}</span> |
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button mat-raised-button color='primary' (click)='addLeaderboard()'>
+          Add
+        </button>
+      </mat-card-actions>
+
+    </mat-card>
+  </form>
+
+</div>
