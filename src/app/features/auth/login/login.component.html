@@ -6,11 +6,12 @@
       </mat-card-subtitle>
       <mat-card-content>
         <mat-form-field>
-          <input required [(ngModel)]="credentials.email" name="email" type="email" matInput #email="ngModel" placeholder="Type your email address">
+          <input required [(ngModel)]="credentials.email" name="email" type="text" 
+          matInput #email='ngModel' autocomplete="" placeholder="Type your email address">
           <mat-error *ngIf="email.invalid" align="end">Must be an email address.</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <input required type="password" [(ngModel)]="credentials.password" name="password" matInput #password="ngModel" min-length="5"
+          <input required type="password" [(ngModel)]="credentials.password" name="password" matInput autocomplete='' #password="ngModel" min-length="5"
             placeholder="Type your password">
           <mat-error *ngIf="password.invalid" align="end">Must have more than 5 characters.</mat-error>
         </mat-form-field>
@@ -19,7 +20,7 @@
         </div>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button [disabled]="loginForm.form.invalid" class="btn-primary" type="submit" (click)='onLogin()'>Login</button>
+        <button mat-button class="btn-primary" type="submit" (click)='onLogin()'>Login</button>
         <button mat-button (click)='onCancel()'>Cancel</button>
       </mat-card-actions>
     </mat-card>

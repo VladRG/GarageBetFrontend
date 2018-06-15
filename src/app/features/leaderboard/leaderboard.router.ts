@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppLoggedInGuard } from '@app/core';
 import { LeaderboardsComponent } from './leaderboards/leaderboards.component';
 import { StatsComponent } from './stats/stats.component';
-import { AddLeaderboardComponent } from './add/add.component';
+import { LeaderboardFormComponent } from './form/form.component';
 
 const routes: Routes = [
   {
@@ -18,12 +18,12 @@ const routes: Routes = [
   },
   {
     path: 'leaderboard/add',
-    component: AddLeaderboardComponent,
+    component: LeaderboardFormComponent,
     canActivate: [AppLoggedInGuard]
   },
   {
     path: 'leaderboard/edit/:group',
-    component: AddLeaderboardComponent,
+    component: LeaderboardFormComponent,
     canActivate: [AppLoggedInGuard]
   }
 ];

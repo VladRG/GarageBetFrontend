@@ -12,7 +12,7 @@ export class AppLoggedInGuard implements CanActivate {
     if (this.service.isLoggedIn()) {
       return true;
     }
-    this.router.navigateByUrl('login');
+    this.router.navigateByUrl(`login?redirect=${state.url.substr(1)}`);
     return false;
   }
 }

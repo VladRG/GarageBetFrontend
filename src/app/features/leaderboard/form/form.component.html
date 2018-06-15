@@ -1,0 +1,43 @@
+<app-loading-spinner [isLoading]='isLoading' message='Loading...'>
+  <div class="row">
+    <mat-card class="col-md-8 col-xs-12 offset-md-2">
+      <form #newLeaderboardForm='ngForm'>
+        <mat-card-title>Create Leaderboard</mat-card-title>
+        <mat-card-subtitle>Create a custom leaderboard in which you invite your friends</mat-card-subtitle>
+        <mat-card-content>
+
+          <mat-form-field>
+            <input required matInput placeholder="Leaderboard Name" [(ngModel)]='leaderboard.name' #name name='name' />
+            <mat-error>Required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Users" [matAutocomplete]="users" [formControl]="userCtrl">
+            <mat-autocomplete #users="matAutocomplete" (optionSelected)='selected($event)'>
+              <mat-option *ngFor="let user of filteredUsers | async" [value]="user">
+                <span>{{ user.firstName }} {{user.lastName}}</span>
+              </mat-option>
+            </mat-autocomplete>
+          </mat-form-field>
+
+          <mat-list>
+            <mat-list-item *ngFor='let user of leaderboard.users; let index = index;'>
+              {{index + 1}}. {{user.firstName}} {{user.lastName}} &nbsp;
+              <button mat-button (click)='remove(user)'>
+                <mat-icon>delete</mat-icon>
+              </button>
+            </mat-list-item>
+          </mat-list>
+
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-raised-button color='primary' (click)='save()'>
+            Save
+          </button>
+        </mat-card-actions>
+
+      </form>
+    </mat-card>
+  </div>
+</app-loading-spinner>

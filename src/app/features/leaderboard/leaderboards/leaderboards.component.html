@@ -9,7 +9,7 @@
           [ngClass]='{"leaderboard-selected": checkSelected(leaderboard.id)}'>
           {{leaderboard.name}}
         </button>
-        <button mat-raised-button class="leaderboard-add-button" routerLink='add'>
+        <button mat-raised-button *ngIf='canAdd()' class="leaderboard-add-button" routerLink='add'>
           <mat-icon>add</mat-icon>
         </button>
       </div>
@@ -17,7 +17,7 @@
         <app-leaderboard *ngIf='!currentGroup'></app-leaderboard>
         <ng-container *ngFor='let leaderboard of leaderboards'>
           <ng-container *ngIf='currentGroup === leaderboard.id'>
-            <app-leaderboard [group]='leaderboard.id' [owner]='leaderboard.owner.email' (leave)='onLeave($event)' (delete)='onDelete($event)'></app-leaderboard>
+            <app-leaderboard [group]='leaderboard.id' [owner]='leaderboard.owner' (leave)='onLeave($event)' (delete)='onDelete($event)'></app-leaderboard>
           </ng-container>
         </ng-container>
       </div>
