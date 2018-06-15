@@ -1,4 +1,4 @@
-import { Bet } from "./Bet";
+import { Bet } from './Bet';
 
 export class BetModel extends Bet {
   homeScore: number;

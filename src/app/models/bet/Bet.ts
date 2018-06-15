@@ -1,4 +1,4 @@
-import { BaseEntity } from "@app/models/BaseEntity";
+import { BaseEntity } from '@app/models/BaseEntity';
 
 export class Bet extends BaseEntity {
   userId: number;
